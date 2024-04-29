@@ -1,0 +1,28 @@
+backend
+    build:
+        mvn package 
+        mvn clean package
+    run: 
+        mvn spring-boot:run
+        docker compose up --build <-- mostra il terminale di docker
+    build docker: 
+        docker build -t interactivecv .
+        docker compose up --build <-- builda e lancia
+    create container docker:
+        docker run -d -p 8080:8080 interactivecv
+
+frontend
+    npm start
+        Starts the development server.
+
+    npm run build
+        Bundles the app into static files for production.
+
+    npm test
+        Starts the test runner.
+
+    npm run eject
+        Removes this tool and copies build dependencies, configuration files
+        and scripts into the app directory. If you do this, you can’t go back!
+
+    cd interactivecv-fe

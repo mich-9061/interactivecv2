@@ -1,0 +1,23 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: interactive-cv-2-be
+    environment:
+      MYSQL_ROOT_PASSWORD: funnypw
+      MYSQL_DATABASE: interactivecv
+      MYSQL_USER: mich
+      MYSQL_PASSWORD: funnypw
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # scommentare quando voglio rilasciare su docker
+  # interactivecv:
+  #   image: interactivecv
+  #   build:
+  #     context: .
+  #     dockerfile: ./Dockerfile
+  #   ports:
+  #     - 8080:8080
+volumes:
+  mysql_data:
