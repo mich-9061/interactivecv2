@@ -11,23 +11,51 @@ export default function Resume() {
     }, []);
 
     return (
-        <div className="flex flex-row lg:flex-col w-full">
-            <div className="flex flex-row w-full bg-slate-400 h-2/3 items-start">
-                <div className="text-xl lg:text-3xl">
-                    { resume && resume.personalInformation ? resume.personalInformation.firstName : 'nobody'}
+        <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full bg-slate-300 h-2/3 items-start px-3">
+                <div className="text-3xl lg:text-7xl">
+                    { resume?.personalInformation ? resume.personalInformation.firstName : 'nobody'}
                 </div>
-                <div className="text-xl lg:text-3xl text-orange-600">
-                    { resume && resume.personalInformation ? resume.personalInformation.secondName : 'nobody'}
+                <div className="text-3xl lg:text-7xl text-orange-600">
+                    { resume?.personalInformation ? resume.personalInformation.secondName : 'nobody'}
                 </div>
-                <div className="text-lg lg:text-2xl text-white bg-black uppercase w-full lg:w-3/4 text-center">
-                    { resume && resume.personalInformation ? resume.personalInformation.city : 'nobody'}
+                <div className="text-2xl lg:text-4xl text-white bg-black uppercase w-full lg:w-3/4 text-center">
+                    { resume?.personalInformation ? resume.personalInformation.city : 'nobody'}
                 </div>
-                <div className="text-md lg:text-lg">
-                    { resume && resume.personalInformation ? resume.personalInformation.description : 'nobody'}
+                <div className="text-lg lg:text-xl">
+                    { resume?.personalInformation ? resume.personalInformation.description : 'nobody'}
                 </div>
             </div>
-            <div className="flex flex-row w-full bg-slate-400 h-1/3">
-
+            <div className="flex flex-col w-full bg-slate-100 h-1/3 px-3">
+                <div className="grid grid-cols-2 text-lg lg:text-xl ">
+                    <div className="text-orange-600">
+                        Phone:
+                    </div>
+                    <div className="">
+                        { resume?.personalInformation ? resume.personalInformation.address : 'nobody'}
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 text-lg lg:text-xl ">
+                    <div className="text-orange-600">
+                        Address:
+                    </div>
+                    <div className="flex flex-col">
+                        <div>
+                            { resume?.personalInformation ? resume.personalInformation.address : 'nobody'}, { resume?.personalInformation ? resume.personalInformation.city : 'nobody'},
+                        </div>
+                        <div>
+                            { resume?.personalInformation ? resume.personalInformation.postalCode : 'nobody'}, { resume?.personalInformation ? resume.personalInformation.country : 'nobody'}
+                        </div>
+                    </div>
+                </div>
+                <div className="grid grid-cols-2 text-lg lg:text-xl ">
+                    <div className="text-orange-600">
+                        Email:
+                    </div>
+                    <div className="">
+                        { resume?.personalInformation ? resume.personalInformation.fiscalCode : 'nobody'}
+                    </div>
+                </div>
             </div>
         </div>
     );

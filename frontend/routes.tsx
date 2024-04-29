@@ -1,16 +1,14 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
-import PersonalInformations from './views/resumes/components/Resume';
-
-
+import Resume from './views/resumes/components/Resume';
 
 const routing = [
   {
-    element: <PersonalInformations />,
+    element: <Resume />,
     handle: { title: 'Interactive CV' },
     children: [
-      { path: '/', element: <PersonalInformations />, handle: { title: 'Interactive CV' } },
-      { path: '/resume/:id', element: <PersonalInformations />, handle: { title: 'Interactive CV' } },
-      { path: '/about', element: <PersonalInformations />, handle: { title: 'About' } },
+      { path: '/', element: <Resume />, handle: { title: 'Interactive CV' } },
+      { path: '/resume/:id', element: <Resume />, handle: { title: 'Interactive CV' } },
+      { path: '/about', element: <Resume />, handle: { title: 'About' } },
     ],
   },
 ] as RouteObject[];
