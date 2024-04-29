@@ -1,20 +1,16 @@
-package main.java.com.mich9061.interactivecv2.services;
+package com.mich9061.interactivecv2.service;
 
-import com.mich9061.interactivecv2.entity.PersonalInformation;
-import com.mich9061.interactivecv2.model.PersonalInformationModel;
-import com.mich9061.interactivecv2.repository.PersonalInformationRepository;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
-import dev.hilla.BrowserCallable;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
-import java.util.List;
 import java.util.Optional;
 
+import com.mich9061.interactivecv2.entity.PersonalInformation;
+import com.mich9061.interactivecv2.repository.PersonalInformationRepository;
+// import com.vaadin.flow.server.auth.AnonymousAllowed;
 
-@AnonymousAllowed
-@BrowserCallable
+// import dev.hilla.BrowserCallable;
+
+
+// @AnonymousAllowed
+// @BrowserCallable
 public class PersonalInformationCallService {
 
     private final PersonalInformationRepository personalInformationRepository;

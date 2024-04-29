@@ -13,6 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ResumeModel {
     
-    private PersonalInformationModel personalInformationModel;
+    private PersonalInformationModel personalInformation;
 
 }

@@ -1,6 +1,6 @@
 {
-  "name": "no-name",
-  "license": "UNLICENSED",
+  "name": "interactivecv2-fe",
+  "license": "GPL-3.0-only",
   "type": "module",
   "dependencies": {
     "@hilla/form": "2.5.5",
@@ -22,12 +22,19 @@
     "@vaadin/bundles": "24.3.0",
     "@vaadin/common-frontend": "0.0.19",
     "@vaadin/router": "1.7.5",
+    "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
-    "lit": "3.1.0"
+    "lit": "3.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@lit-labs/react": "^1.1.0",
     "@rollup/plugin-replace": "5.0.4",
     "@rollup/pluginutils": "5.0.5",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "4.2.0",
     "@vitejs/plugin-react-swc": "3.5.0",
     "async": "3.2.4",
@@ -35,6 +42,7 @@
     "rollup-plugin-brotli": "3.1.0",
     "rollup-plugin-visualizer": "5.9.2",
     "strip-css-comments": "5.0.0",
+    "tailwindcss": "^3.4.1",
     "transform-ast": "2.4.4",
     "typescript": "5.3.3",
     "vite": "^5.2.10",
@@ -85,9 +93,13 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "a0922866a5aea1b2108e36f2d78dd75b74b2c7e756b265fcdf38fb954389cf5c"
+    "hash": "c2097ffd7a083c0bf61aa7f64c29b342898dcd29b51518fc0f92fd11b1ec41c1"
   },
   "overrides": {
+    "classnames": "$classnames",
+    "react": "$react",
+    "react-dom": "$react-dom",
+    "react-router-dom": "$react-router-dom",
     "@vaadin/bundles": "$@vaadin/bundles",
     "@hilla/react-components": "$@hilla/react-components",
     "@vaadin/common-frontend": "$@vaadin/common-frontend",

@@ -1,4 +1,3 @@
-backend
     build:
         mvn package 
         mvn clean package
