@@ -8,12 +8,12 @@ CREATE TABLE IF NOT EXISTS personal_information (
   city VARCHAR(255),
   country VARCHAR(255),
   postal_code VARCHAR(255),
-  description varchar(5000)
+  description varchar(5000),
+  contact_information_id int
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS contact_information (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  person_id INT,
   home_address VARCHAR(255),
   home_city VARCHAR(255),
   home_country VARCHAR(255),
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS contact_information (
   other VARCHAR(255)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-ALTER TABLE  contact_information
-ADD CONSTRAINT fk_contact_person_id FOREIGN KEY (person_id) REFERENCES personal_information(id);
+ALTER TABLE  personal_information
+ADD CONSTRAINT fk_contact_person_id FOREIGN KEY (contact_information_id) REFERENCES contact_information(id);
 
 CREATE TABLE IF NOT EXISTS image (
   id INT AUTO_INCREMENT PRIMARY KEY,
