@@ -21,5 +21,6 @@ public class PersonalInformationModel extends GenericModel{
     private String country;
     private String postalCode;
     private String description;
+    private ContactInformationModel contactInformation;
 
 }

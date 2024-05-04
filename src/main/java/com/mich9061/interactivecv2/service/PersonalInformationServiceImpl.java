@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.PersonalInformationRepository;
 public class PersonalInformationServiceImpl implements PersonalInformationService{
     
     private PersonalInformationRepository personalInformationRepository;
+    private ContactInformationService contactInformationService;
 
     public PersonalInformationModel getPersonalInformation(Long id) {
         return fromEntityToModel(id != null ? personalInformationRepository.findById(id) : Optional.empty());
@@ -28,7 +29,8 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
                 entity.get().getCity(),
                 entity.get().getCountry(),
                 entity.get().getPostalCode(),
-                entity.get().getDescription()
+                entity.get().getDescription(),
+                contactInformationService.getContactInformation(entity.get().getContactInformation().getId())
             );
             personalInformation.setId(entity.get().getId());
             return personalInformation;
@@ -40,8 +42,9 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     }
 
     @Autowired
-    public PersonalInformationServiceImpl(PersonalInformationRepository personalInformationRepository) {
+    public PersonalInformationServiceImpl(PersonalInformationRepository personalInformationRepository, ContactInformationService contactInformationService) {
         this.personalInformationRepository = personalInformationRepository;
+        this.contactInformationService = contactInformationService;
     }
 
 }

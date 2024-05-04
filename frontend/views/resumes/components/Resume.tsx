@@ -32,7 +32,7 @@ export default function Resume() {
                         Phone:
                     </div>
                     <div className="">
-                        { resume?.personalInformation ? resume.personalInformation.address : 'nobody'}
+                        { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.phone : 'nobody'}
                     </div>
                 </div>
                 <div className="grid grid-cols-2 text-lg lg:text-xl ">
@@ -41,10 +41,10 @@ export default function Resume() {
                     </div>
                     <div className="flex flex-col">
                         <div>
-                            { resume?.personalInformation ? resume.personalInformation.address : 'nobody'}, { resume?.personalInformation ? resume.personalInformation.city : 'nobody'},
+                            { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.homeAddress : 'nobody'}, { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.homeCity : 'nobody'},
                         </div>
                         <div>
-                            { resume?.personalInformation ? resume.personalInformation.postalCode : 'nobody'}, { resume?.personalInformation ? resume.personalInformation.country : 'nobody'}
+                            { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.homePostalCode : 'nobody'}, { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.homeCountry : 'nobody'}
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default function Resume() {
                         Email:
                     </div>
                     <div className="">
-                        { resume?.personalInformation ? resume.personalInformation.fiscalCode : 'nobody'}
+                        { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.email : 'nobody'}
                     </div>
                 </div>
             </div>
