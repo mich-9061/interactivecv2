@@ -14,6 +14,8 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     
     private PersonalInformationRepository personalInformationRepository;
     private ContactInformationService contactInformationService;
+    private StudyService studyService;
+    private WorkService workService;
 
     public PersonalInformationModel getPersonalInformation(Long id) {
         return fromEntityToModel(id != null ? personalInformationRepository.findById(id) : Optional.empty());
@@ -30,7 +32,9 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
                 entity.get().getCountry(),
                 entity.get().getPostalCode(),
                 entity.get().getDescription(),
-                contactInformationService.getContactInformation(entity.get().getContactInformation().getId())
+                contactInformationService.getContactInformation(entity.get().getContactInformation().getId()),
+                studyService.getStudies(entity.get().getId()),
+                workService.getWorks(entity.get().getId())
             );
             personalInformation.setId(entity.get().getId());
             return personalInformation;
@@ -42,9 +46,15 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     }
 
     @Autowired
-    public PersonalInformationServiceImpl(PersonalInformationRepository personalInformationRepository, ContactInformationService contactInformationService) {
+    public PersonalInformationServiceImpl(
+        PersonalInformationRepository personalInformationRepository, 
+        ContactInformationService contactInformationService, 
+        StudyService studyService,
+        WorkService workService) {
         this.personalInformationRepository = personalInformationRepository;
         this.contactInformationService = contactInformationService;
+        this.studyService = studyService;
+        this.workService = workService;
     }
 
 }

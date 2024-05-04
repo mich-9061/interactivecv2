@@ -1,5 +1,7 @@
 package com.mich9061.interactivecv2.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +24,7 @@ public class PersonalInformationModel extends GenericModel{
     private String postalCode;
     private String description;
     private ContactInformationModel contactInformation;
+    private List<StudyModel> studies;
+    private List<WorkModel> works;
 
 }

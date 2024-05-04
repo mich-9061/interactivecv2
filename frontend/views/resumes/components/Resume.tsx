@@ -56,6 +56,32 @@ export default function Resume() {
                         { resume?.personalInformation?.contactInformation ? resume.personalInformation.contactInformation.email : 'nobody'}
                     </div>
                 </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista studies:
+                    </div>
+                    {resume?.personalInformation?.studies?.map(study => {
+                            return (
+                                <div className="" key={study?.id}>
+                                    { study?.courseTitle }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista works:
+                    </div>
+                    {resume?.personalInformation?.works?.map(work => {
+                            return (
+                                <div className="" key={work?.id}>
+                                    { work?.workTitle }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     );
