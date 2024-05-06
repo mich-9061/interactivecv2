@@ -125,7 +125,42 @@ export default function Resume() {
                     {resume?.personalInformation?.technologies?.map(technology => {
                             return (
                                 <div className="" key={technology?.id}>
-                                    { technology?.language + ' Level: ' + technology?.experienceYears}
+                                    { technology?.language + ' Years of experience: ' + technology?.experienceYears}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista skills:
+                    </div>
+                    {resume?.personalInformation?.skills?.map(skill => {
+                            return (
+                                <div className="" key={skill?.id}>
+                                    { skill?.description }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista hobbies:
+                    </div>
+                    {resume?.personalInformation?.hobbies?.map(hobby => {
+                            return (
+                                <div key={hobby?.id}>
+                                    <div className="">
+                                        { hobby?.description }
+                                    </div>
+                                    {hobby?.moreInformation && (
+                                        <div>
+                                            <div className="ml-3">
+                                                Descrizione: {hobby?.moreInformation.description}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             )
                         })

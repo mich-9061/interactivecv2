@@ -28,5 +28,7 @@ public class PersonalInformationModel extends GenericModel{
     private List<WorkModel> works;
     private List<LanguageModel> languages;
     private List<TechnologyModel> technologies;
+    private List<SkillModel> skills;
+    private List<HobbyModel> hobbies;
 
 }

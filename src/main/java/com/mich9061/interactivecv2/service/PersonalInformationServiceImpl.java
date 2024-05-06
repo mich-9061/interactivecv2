@@ -18,6 +18,8 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     private WorkService workService;
     private LanguageService languageService;
     private TechnologyService technologyService;
+    private SkillService skillService;
+    private HobbyService hobbyService;
 
     public PersonalInformationModel getPersonalInformation(Long id) {
         return fromEntityToModel(id != null ? personalInformationRepository.findById(id) : Optional.empty());
@@ -38,7 +40,9 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
                 studyService.getStudies(entity.get().getId()),
                 workService.getWorks(entity.get().getId()),
                 languageService.getLanguages(entity.get().getId()),
-                technologyService.getTechnologies(entity.get().getId())
+                technologyService.getTechnologies(entity.get().getId()),
+                skillService.getSkills(entity.get().getId()),
+                hobbyService.getHobbies(entity.get().getId())
             );
             personalInformation.setId(entity.get().getId());
             return personalInformation;
@@ -56,13 +60,17 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
         StudyService studyService,
         WorkService workService,
         LanguageService languageService,
-        TechnologyService technologyService) {
+        TechnologyService technologyService,
+        SkillService skillService,
+        HobbyService hobbyService) {
         this.personalInformationRepository = personalInformationRepository;
         this.contactInformationService = contactInformationService;
         this.studyService = studyService;
         this.workService = workService;
         this.languageService = languageService;
         this.technologyService = technologyService;
+        this.skillService = skillService;
+        this.hobbyService = hobbyService;
     }
 
 }

@@ -11,15 +11,10 @@ import lombok.ToString;
 @Setter
 @Getter
 @AllArgsConstructor
-public class StudyModel extends GenericModel{
+public class SkillModel extends GenericModel{
 
   private String personId;
-  private String startDate;
-  private String endDate;
-  private String school;
-  private String vote;
-  private String courseTitle;
-  private String type;
+  private String description;
   private int position;
     
 }
