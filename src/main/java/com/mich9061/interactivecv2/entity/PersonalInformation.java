@@ -45,5 +45,11 @@ public class PersonalInformation{
         @OneToMany(fetch = FetchType.EAGER)
         @JoinColumn(name = "personId")
         private List<Work> works;
-    
+        @OneToMany(fetch = FetchType.EAGER)
+        @JoinColumn(name = "personId")
+        private List<Language> languages;
+        @OneToMany(fetch = FetchType.EAGER)
+        @JoinColumn(name = "personId")
+        private List<Technology> tecnologies;
+
 }

@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.WorkRepository;
 public class WorkServiceImpl implements WorkService{
 
     private WorkRepository workRepository;
+    private WorkBulletpointService workBulletpointService;
 
     public List<WorkModel> getWorks(Long personId) {
         return workRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -26,7 +27,9 @@ public class WorkServiceImpl implements WorkService{
                 entity.getEndDate().toString(),
                 entity.getCompany(),
                 entity.getWorkTitle(),
-                entity.getPosition()
+                entity.getPosition(),
+                workBulletpointService.getWorkBulletpoints(entity.getId())
+
             );
             work.setId(entity.getId());
             return work;
@@ -36,8 +39,11 @@ public class WorkServiceImpl implements WorkService{
         }
     } 
 
-    public WorkServiceImpl(WorkRepository workRepository) {
+    public WorkServiceImpl(
+        WorkRepository workRepository,
+        WorkBulletpointService workBulletpointService) {
         this.workRepository = workRepository;
+        this.workBulletpointService = workBulletpointService;
     }
 
 }

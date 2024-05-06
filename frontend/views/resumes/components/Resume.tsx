@@ -75,8 +75,57 @@ export default function Resume() {
                     </div>
                     {resume?.personalInformation?.works?.map(work => {
                             return (
-                                <div className="" key={work?.id}>
-                                    { work?.workTitle }
+                                <div key={work?.id}>
+                                    <div className="">
+                                        { work?.workTitle }
+                                    </div>
+                                    <div className="">
+                                        Inizio: { work?.startDate }
+                                    </div>
+                                    { work?.endDate && (
+                                        <div className="">
+                                            Fine: {work.endDate}
+                                        </div>
+                                    )}
+                                    <div className="text-orange-600 ml-3">
+                                        Test lista workBulletpoints:
+                                    </div>
+                                    <ul className="ml-3" >
+                                        {work?.workBulletpoints?.map(bulletPoint => {
+                                            return (
+                                                <li key={bulletPoint?.id}>
+                                                    { bulletPoint?.jobDescription }
+                                                </li>
+                                                )
+                                            })
+                                        }
+                                    </ul>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista languages:
+                    </div>
+                    {resume?.personalInformation?.languages?.map(language => {
+                            return (
+                                <div className="" key={language?.id}>
+                                    { language?.language + ' Level: ' + language?.level}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista technologies:
+                    </div>
+                    {resume?.personalInformation?.technologies?.map(technology => {
+                            return (
+                                <div className="" key={technology?.id}>
+                                    { technology?.language + ' Level: ' + technology?.experienceYears}
                                 </div>
                             )
                         })

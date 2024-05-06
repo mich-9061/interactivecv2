@@ -1,7 +1,5 @@
 package com.mich9061.interactivecv2.model;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,14 +11,17 @@ import lombok.ToString;
 @Setter
 @Getter
 @AllArgsConstructor
-public class WorkModel extends GenericModel{
+public class TechnologyModel extends GenericModel{
 
   private String personId;
-  private String startDate;
-  private String endDate;
-  private String company;
-  private String workTitle;
+  private String language;
+  private int level;
+  private boolean certification;
+  private String certificationName;
+  private String certificationLevel;
+  private String certificationDate;
+  private int experienceYears;
+  private int projectNumber;
   private int position;
-  private List<WorkBulletpointModel> workBulletpoints;
     
 }
