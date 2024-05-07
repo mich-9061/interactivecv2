@@ -26,8 +26,8 @@ public class Hobby{
         @GeneratedValue
         private Long id;
         private Long personId;
-        @OneToOne(fetch = FetchType.EAGER)
-        @JoinColumn(name = "more_information_id")
+        @OneToOne(fetch = FetchType.EAGER, optional = true)
+        @JoinColumn(name = "more_information_id", nullable = true)
         private MoreInformation moreInformation;
         private String description;
         private int position;

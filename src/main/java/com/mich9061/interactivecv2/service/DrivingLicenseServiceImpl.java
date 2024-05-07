@@ -23,7 +23,7 @@ public class DrivingLicenseServiceImpl implements DrivingLicenseService{
         if(entity != null) {
             DrivingLicenseModel work = new DrivingLicenseModel(
                 entity.getPersonId().toString(),
-                moreInformationService.getMoreInformation(entity.getMoreInformation().getId()),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null,
                 entity.getType(),
                 entity.getPosition()
             );

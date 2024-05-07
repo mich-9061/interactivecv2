@@ -23,7 +23,7 @@ public class HobbyServiceImpl implements HobbyService{
         if(entity != null) {
             HobbyModel work = new HobbyModel(
                 entity.getPersonId().toString(),
-                moreInformationService.getMoreInformation(entity.getMoreInformation().getId()),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null,
                 entity.getDescription(),
                 entity.getPosition()
             );
