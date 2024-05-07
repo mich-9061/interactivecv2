@@ -30,5 +30,6 @@ public class PersonalInformationModel extends GenericModel{
     private List<TechnologyModel> technologies;
     private List<SkillModel> skills;
     private List<HobbyModel> hobbies;
+    private List<DrivingLicenseModel> drivingLicenses;
 
 }

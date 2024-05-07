@@ -11,11 +11,11 @@ import lombok.ToString;
 @Setter
 @Getter
 @AllArgsConstructor
-public class HobbyModel extends GenericModel{
+public class DrivingLicenseModel extends GenericModel{
 
   private String personId;
   private MoreInformationModel moreInformation;
-  private String description;
+  private String type;
   private int position;
     
 }

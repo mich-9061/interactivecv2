@@ -166,6 +166,28 @@ export default function Resume() {
                         })
                     }
                 </div>
+                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                    <div className="text-orange-600">
+                        Test lista Driving Licenses:
+                    </div>
+                    {resume?.personalInformation?.drivingLicenses?.map(drivingLicense => {
+                            return (
+                                <div key={drivingLicense?.id}>
+                                    <div className="">
+                                        { drivingLicense?.type }
+                                    </div>
+                                    {drivingLicense?.moreInformation && (
+                                        <div>
+                                            <div className="ml-3">
+                                                Descrizione: {drivingLicense?.moreInformation.description}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div>
     );

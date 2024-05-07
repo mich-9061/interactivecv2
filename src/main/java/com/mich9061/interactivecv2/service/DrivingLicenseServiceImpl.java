@@ -5,26 +5,26 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.mich9061.interactivecv2.entity.Hobby;
-import com.mich9061.interactivecv2.model.HobbyModel;
-import com.mich9061.interactivecv2.repository.HobbyRepository;
+import com.mich9061.interactivecv2.entity.DrivingLicense;
+import com.mich9061.interactivecv2.model.DrivingLicenseModel;
+import com.mich9061.interactivecv2.repository.DrivingLicenseRepository;
 
 @Service
-public class HobbyServiceImpl implements HobbyService{
+public class DrivingLicenseServiceImpl implements DrivingLicenseService{
 
-    private HobbyRepository workRepository;
+    private DrivingLicenseRepository workRepository;
     private MoreInformationService moreInformationService;
 
-    public List<HobbyModel> getHobbies(Long personId) {
+    public List<DrivingLicenseModel> getDrivingLicenses(Long personId) {
         return workRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
     }
 
-    private HobbyModel fromEntityToModel(Hobby entity) {
+    private DrivingLicenseModel fromEntityToModel(DrivingLicense entity) {
         if(entity != null) {
-            HobbyModel work = new HobbyModel(
+            DrivingLicenseModel work = new DrivingLicenseModel(
                 entity.getPersonId().toString(),
                 moreInformationService.getMoreInformation(entity.getMoreInformation().getId()),
-                entity.getDescription(),
+                entity.getType(),
                 entity.getPosition()
             );
             work.setId(entity.getId());
@@ -35,8 +35,8 @@ public class HobbyServiceImpl implements HobbyService{
         }
     } 
 
-    public HobbyServiceImpl(
-        HobbyRepository workRepository,
+    public DrivingLicenseServiceImpl(
+        DrivingLicenseRepository workRepository,
         MoreInformationService moreInformationService) {
         this.workRepository = workRepository;
         this.moreInformationService = moreInformationService;

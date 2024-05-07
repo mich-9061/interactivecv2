@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @Getter
 @AllArgsConstructor
-public class HobbyMoreInformationModel extends GenericModel{
+public class MoreInformationModel extends GenericModel{
 
   private String personId;
   private String description;
