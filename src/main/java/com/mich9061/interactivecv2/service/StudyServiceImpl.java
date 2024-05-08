@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mich9061.interactivecv2.entity.Study;
 import com.mich9061.interactivecv2.model.StudyModel;
 import com.mich9061.interactivecv2.repository.StudyRepository;
+import com.mich9061.interactivecv2.utils.MyUtils;
 
 @Service
 public class StudyServiceImpl implements StudyService{
@@ -22,8 +23,8 @@ public class StudyServiceImpl implements StudyService{
         if(entity != null) {
             StudyModel study = new StudyModel(
                 entity.getPersonId().toString(),
-                entity.getStartDate().toString(),
-                entity.getEndDate().toString(),
+                MyUtils.formatDate(entity.getStartDate()),
+                MyUtils.formatDate(entity.getEndDate()),
                 entity.getSchool(),
                 entity.getVote(),
                 entity.getCourseTitle(),

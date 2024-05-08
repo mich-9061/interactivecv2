@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.mich9061.interactivecv2.entity.Work;
 import com.mich9061.interactivecv2.model.WorkModel;
 import com.mich9061.interactivecv2.repository.WorkRepository;
+import com.mich9061.interactivecv2.utils.MyUtils;
 
 @Service
 public class WorkServiceImpl implements WorkService{
@@ -23,8 +24,8 @@ public class WorkServiceImpl implements WorkService{
         if(entity != null) {
             WorkModel work = new WorkModel(
                 entity.getPersonId().toString(),
-                entity.getStartDate().toString(),
-                entity.getEndDate().toString(),
+                MyUtils.formatDate(entity.getStartDate()),
+                MyUtils.formatDate(entity.getEndDate()),
                 entity.getCompany(),
                 entity.getWorkTitle(),
                 entity.getPosition(),
