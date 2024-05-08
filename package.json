@@ -3,6 +3,8 @@
   "license": "GPL-3.0-only",
   "type": "module",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@hilla/form": "2.5.5",
     "@hilla/frontend": "2.5.5",
     "@hilla/generator-typescript-cli": "2.5.5",
@@ -18,6 +20,7 @@
     "@hilla/react-components": "2.3.0",
     "@hilla/react-crud": "2.5.5",
     "@hilla/react-form": "2.5.5",
+    "@mui/material": "^5.15.17",
     "@polymer/polymer": "3.5.1",
     "@vaadin/bundles": "24.3.0",
     "@vaadin/common-frontend": "0.0.19",
