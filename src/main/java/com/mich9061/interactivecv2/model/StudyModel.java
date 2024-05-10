@@ -21,5 +21,6 @@ public class StudyModel extends GenericModel{
   private String courseTitle;
   private String type;
   private int position;
+  private MoreInformationModel moreInformation;
     
 }

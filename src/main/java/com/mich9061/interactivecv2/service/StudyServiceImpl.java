@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.mich9061.interactivecv2.entity.Study;
+import com.mich9061.interactivecv2.model.MoreInformationModel;
 import com.mich9061.interactivecv2.model.StudyModel;
 import com.mich9061.interactivecv2.repository.StudyRepository;
 import com.mich9061.interactivecv2.utils.MyUtils;
@@ -14,6 +15,7 @@ import com.mich9061.interactivecv2.utils.MyUtils;
 public class StudyServiceImpl implements StudyService{
 
     private StudyRepository studyRepository;
+    private MoreInformationService moreInformationService;
 
     public List<StudyModel> getStudies(Long personId) {
         return studyRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -29,7 +31,8 @@ public class StudyServiceImpl implements StudyService{
                 entity.getVote(),
                 entity.getCourseTitle(),
                 entity.getType(),
-                entity.getPosition()
+                entity.getPosition(),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             study.setId(entity.getId());
             return study;
@@ -39,8 +42,11 @@ public class StudyServiceImpl implements StudyService{
         }
     } 
 
-    public StudyServiceImpl(StudyRepository studyRepository) {
+    public StudyServiceImpl(
+        StudyRepository studyRepository,
+        MoreInformationService moreInformationService) {
         this.studyRepository = studyRepository;
+        this.moreInformationService = moreInformationService;
     }
 
 }

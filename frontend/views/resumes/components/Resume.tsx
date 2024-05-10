@@ -6,6 +6,8 @@ import { MyHeader } from './MyHeader';
 import { ContactInformation } from './ContactInformation';
 import { Work } from './Work';
 import { Technology } from './Technology';
+import { Study } from './Study';
+import { Skill } from './Skill';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
@@ -18,7 +20,7 @@ export default function Resume() {
         <div className="flex justify-center">
             {resume?.personalInformation ? (
                 <div className="flex flex-row w-full max-w-7xl">
-                    <div className="w-full lg:w-5/12">
+                    <div className="w-full lg:w-[47%]">
                         <MyHeader {...resume.personalInformation} />
                         <ContactInformation {...resume.personalInformation.contactInformation} />
                         <div className='w-full text-2xl lg:text-4xl text-white font-title bg-orange-600 uppercase mt-5 p-6'>
@@ -29,14 +31,27 @@ export default function Resume() {
                                 <Work {...work} position={work?.position ?? 0} />
                             )}
                         )}
+                        <div className="flex flex-col">
+                            <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2">
+                                Skills
+                            </div>
+                            {resume?.personalInformation?.skills?.map(skill => {
+                                    return (
+                                        <Skill {...skill} 
+                                            position={skill?.position ?? 0} />
+                                    )
+                                })
+                            }
+                        </div>
                     </div>
-                    <div className="w-full lg:w-7/12 bg-gray-800 text-white">
+                    <div className="w-0 lg:w-[1%] bg-orange-600" />
+                    <div className="w-full lg:w-[52%] bg-gray-800 text-white">
                         <div className="flex flex-col w-full">
                             <div className="flex flex-col">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
                                     Technologies/Languages
                                 </div>
-                                <div className="grid grid-cols-3">
+                                <div className="grid grid-cols-3 gap-2">
                                     {resume?.personalInformation?.technologies?.map(technology => {
                                             return (
                                                 <Technology {...technology} 
@@ -44,21 +59,20 @@ export default function Resume() {
                                                     level={technology?.level ?? 0} 
                                                     certification={technology?.certification ?? false}
                                                     experienceYears={technology?.experienceYears ?? 0}
-                                                    projectNumber={technology?.projectNumber ?? 0}/>
+                                                    projectNumber={technology?.projectNumber ?? 0} />
                                             )
                                         })
                                     }
                                 </div>
                             </div>
-                            <div className="flex flex-col text-lg lg:text-xl mt-2">
-                                <div className="text-orange-600">
-                                    Test lista studies:
+                            <div className="flex flex-col">
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
+                                    Education
                                 </div>
                                 {resume?.personalInformation?.studies?.map(study => {
                                         return (
-                                            <div className="" key={study?.id}>
-                                                { study?.courseTitle }
-                                            </div>
+                                            <Study {...study} 
+                                                position={study?.position ?? 0} />
                                         )
                                     })
                                 }
@@ -71,20 +85,6 @@ export default function Resume() {
                                         return (
                                             <div className="" key={language?.id}>
                                                 { language?.language + ' Level: ' + language?.level}
-                                            </div>
-                                        )
-                                    })
-                                }
-                            </div>
-                            
-                            <div className="flex flex-col text-lg lg:text-xl mt-2">
-                                <div className="text-orange-600">
-                                    Test lista skills:
-                                </div>
-                                {resume?.personalInformation?.skills?.map(skill => {
-                                        return (
-                                            <div className="" key={skill?.id}>
-                                                { skill?.description }
                                             </div>
                                         )
                                     })
@@ -137,7 +137,7 @@ export default function Resume() {
                         </div>
                     </div>
                 </div>
-            ) : <p className='text-center text-lg lg:text-xl'>Resume not Found</p>}
+            ) : <p className='text-center text-lg lg:text-xl font-title'>Resume not Found</p>}
         </div>
     );
 }
