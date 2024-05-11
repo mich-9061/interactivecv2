@@ -5,3 +5,5 @@ databaseChangeLog:
       file: db/changelog/2024-05-11-2000-more-info-all-tables.yaml
   - include:
       file: db/changelog/2024-05-11-2030-remove-unused.yaml
+  - include:
+      file: db/changelog/2024-05-11-2130-rename-col-language.yaml

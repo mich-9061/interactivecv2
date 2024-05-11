@@ -1,0 +1,12 @@
+databaseChangeLog:
+- changeSet:
+    id: 2024-05-11-2130-rename-col-language-1
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.4
+    -  renameColumn:
+        columnDataType: varchar(255)
+        newColumnName: language_name
+        oldColumnName: language
+        tableName: language

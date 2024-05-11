@@ -26,7 +26,7 @@ export default function Resume() {
                         <div className="w-full lg:w-[47%]">
                             <MyHeader {...resume.personalInformation} />
                             <ContactInformation {...resume.personalInformation.contactInformation} />
-                            <div className='w-full text-2xl lg:text-4xl text-white font-title bg-orange-600 uppercase mt-5 p-6'>
+                            <div className='w-full text-2xl lg:text-4xl text-white font-title bg-orange-600 uppercase p-6'>
                                 WORK EXPERIENCE
                             </div>
                             {resume.personalInformation.works?.map(work => {
@@ -38,19 +38,21 @@ export default function Resume() {
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2">
                                     Skills
                                 </div>
-                                {resume?.personalInformation?.skills?.map(skill => {
-                                        return (
-                                            <Skill {...skill} 
-                                                position={skill?.position ?? 0} />
-                                        )
-                                    })
-                                }
+                                <div className="bg-gray-100 pt-4 pb-6">
+                                    {resume?.personalInformation?.skills?.map(skill => {
+                                            return (
+                                                <Skill {...skill} 
+                                                    position={skill?.position ?? 0} />
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                             <div className="flex flex-col">
-                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                     Languages
                                 </div>
-                                <div className="grid grid-cols-3 gap-2 bg-gray-50">
+                                <div className="grid grid-cols-3 gap-2 bg-gray-100">
                                     {resume?.personalInformation?.languages?.map(language => {
                                             return (
                                                 <Language {...language} 
@@ -67,12 +69,20 @@ export default function Resume() {
                                     }
                                 </div>
                             </div>
+                            <div className="flex flex-row justify-around items-baseline bg-gray-100 grow">
+                                <div className=" bg-orange-600 h-fit">
+                                    PHOTO
+                                </div>
+                                <div className=" bg-orange-600">
+                                    QR CODE
+                                </div>
+                            </div>
                         </div>
                         <div className="w-0 lg:w-[1%] bg-orange-600" />
                         <div className="w-full lg:w-[52%] bg-gray-800 text-white">
                             <div className="flex flex-col w-full">
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-2">
                                         Technologies/Languages
                                     </div>
                                     <div className="grid grid-cols-3 gap-2">

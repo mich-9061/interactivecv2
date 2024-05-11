@@ -4,9 +4,9 @@ import LanguageModel from "Frontend/generated/com/mich9061/interactivecv2/model/
 export const Language = (props: LanguageModel) => {
     return (
         // versione con tutto a destra
-        <div className="flex flex-col border border-gray-500 bg-gray-50 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-100">
+        <div className="flex flex-col border border-gray-500 bg-gray-100 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-200">
             <div className="flex flex-row items-baseline justify-between font-name font-semibold">
-                {props.language}
+                {props.languageName}
                 <Rating 
                     name="read-only"  
                     icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 

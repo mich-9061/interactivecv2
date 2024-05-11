@@ -3,7 +3,7 @@ import WorkModel from "Frontend/generated/com/mich9061/interactivecv2/model/Work
 export const Work = (props: WorkModel) => {
     
     return (
-        <div className="flex flex-col w-full bg-gray-50 items-start p-6">
+        <div className="flex flex-col w-full bg-gray-100 items-start p-6">
             <div className="text-lg lg:text-xl font-name text-white bg-orange-600 p-1">
                 from { props?.startDate } to { props?.endDate ?  props.endDate : 'now' }
             </div>
