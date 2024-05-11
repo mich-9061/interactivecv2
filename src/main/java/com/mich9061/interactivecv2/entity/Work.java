@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,5 +38,8 @@ public class Work{
         @OneToMany(fetch = FetchType.EAGER)
         @JoinColumn(name = "workId")
         private List<WorkBulletpoint> workBulletpoints;
+        @OneToOne(fetch = FetchType.LAZY, optional = true)
+        @JoinColumn(name = "more_information_id", nullable = true)
+        private MoreInformation moreInformation;
     
 }

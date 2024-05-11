@@ -14,7 +14,7 @@ import lombok.ToString;
 public class LanguageModel extends GenericModel{
 
   private String personId;
-  private String language;
+  private String languageName;
   private int writtenLevel;
   private int spokenLevel;
   private int readLevel;
@@ -26,5 +26,6 @@ public class LanguageModel extends GenericModel{
   private boolean abroadExperience;
   private int abroadMonths;
   private int position;
+  private MoreInformationModel moreInformation;
     
 }

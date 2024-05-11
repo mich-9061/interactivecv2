@@ -50,7 +50,7 @@ export default function Resume() {
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
                                     Languages
                                 </div>
-                                <div className="grid grid-cols-3 gap-2">
+                                <div className="grid grid-cols-3 gap-2 bg-gray-50">
                                     {resume?.personalInformation?.languages?.map(language => {
                                             return (
                                                 <Language {...language} 
@@ -113,7 +113,7 @@ export default function Resume() {
                                         })
                                     }
                                 </div>
-                                <div className="flex flex-col text-lg lg:text-xl mt-2">
+                                {/* <div className="flex flex-col text-lg lg:text-xl mt-2">
                                     <div className="text-orange-600">
                                         Test lista Driving Licenses:
                                     </div>
@@ -134,7 +134,7 @@ export default function Resume() {
                                             )
                                         })
                                     }
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.TechnologyRepository;
 public class TechnologyServiceImpl implements TechnologyService{
 
     private TechnologyRepository technologyRepository;
+    private MoreInformationService moreInformationService;
 
     public List<TechnologyModel> getTechnologies(Long personId) {
         return technologyRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -30,7 +31,8 @@ public class TechnologyServiceImpl implements TechnologyService{
                 entity.getCertificationDate() != null ? entity.getCertificationDate().toString() : null,
                 entity.getExperienceYears(),
                 entity.getProjectNumber(),
-                entity.getPosition()
+                entity.getPosition(),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             techology.setId(entity.getId());
             return techology;
@@ -40,8 +42,11 @@ public class TechnologyServiceImpl implements TechnologyService{
         }
     } 
 
-    public TechnologyServiceImpl(TechnologyRepository technologyRepository) {
+    public TechnologyServiceImpl(
+        TechnologyRepository technologyRepository,
+        MoreInformationService moreInformationService) {
         this.technologyRepository = technologyRepository;
+        this.moreInformationService = moreInformationService;
     }
 
 }

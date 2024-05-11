@@ -14,6 +14,33 @@ export const Language = (props: LanguageModel) => {
                     value={props.level} 
                     readOnly />
             </div>
+            <div className="flex flex-row items-baseline justify-between font-paragraph font-sm mt-1">
+                Read
+                <Rating 
+                    name="read-only"  
+                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
+                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
+                    value={props.readLevel} 
+                    readOnly />
+            </div>
+            <div className="flex flex-row items-baseline justify-between font-sm font-paragraph">
+                Written
+                <Rating 
+                    name="read-only"  
+                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
+                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
+                    value={props.writtenLevel} 
+                    readOnly />
+            </div>
+            <div className="flex flex-row items-baseline justify-between font-sm font-paragraph">
+                Spoken
+                <Rating 
+                    name="read-only"  
+                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
+                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
+                    value={props.spokenLevel} 
+                    readOnly />
+            </div>
             {/* <div className="flex flex-row justify-between">
                 <div className="text-right font-paragraph font-thin">
                     {getExperienceLabel(props.experienceYears)}
@@ -25,7 +52,7 @@ export const Language = (props: LanguageModel) => {
                 </div>
             </div> */}
             {props.abroadExperience && (
-                <div className="text-right font-paragraph font-thin">
+                <div className="text-right font-paragraph font-thin mt-1">
                     {getExperienceLabel(props.abroadMonths)}
                 </div>
             )}

@@ -13,8 +13,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class MoreInformationModel extends GenericModel{
 
-  private String personId;
   private String description;
-  private int position;
     
 }

@@ -15,6 +15,7 @@ public class WorkServiceImpl implements WorkService{
 
     private WorkRepository workRepository;
     private WorkBulletpointService workBulletpointService;
+    private MoreInformationService moreInformationService;
 
     public List<WorkModel> getWorks(Long personId) {
         return workRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -29,8 +30,8 @@ public class WorkServiceImpl implements WorkService{
                 entity.getCompany(),
                 entity.getWorkTitle(),
                 entity.getPosition(),
-                workBulletpointService.getWorkBulletpoints(entity.getId())
-
+                workBulletpointService.getWorkBulletpoints(entity.getId()),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             work.setId(entity.getId());
             return work;
@@ -42,9 +43,11 @@ public class WorkServiceImpl implements WorkService{
 
     public WorkServiceImpl(
         WorkRepository workRepository,
-        WorkBulletpointService workBulletpointService) {
+        WorkBulletpointService workBulletpointService,
+        MoreInformationService moreInformationService) {
         this.workRepository = workRepository;
         this.workBulletpointService = workBulletpointService;
+        this.moreInformationService = moreInformationService;
     }
 
 }

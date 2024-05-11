@@ -16,5 +16,6 @@ public class SkillModel extends GenericModel{
   private String personId;
   private String description;
   private int position;
+  private MoreInformationModel moreInformation;
     
 }

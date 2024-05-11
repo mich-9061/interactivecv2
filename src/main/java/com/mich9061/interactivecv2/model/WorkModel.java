@@ -22,5 +22,6 @@ public class WorkModel extends GenericModel{
   private String workTitle;
   private int position;
   private List<WorkBulletpointModel> workBulletpoints;
+  private MoreInformationModel moreInformation;
     
 }

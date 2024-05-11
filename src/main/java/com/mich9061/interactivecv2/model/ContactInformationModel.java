@@ -23,5 +23,6 @@ public class ContactInformationModel extends GenericModel{
     private String githubProfile;
     private String website;
     private String other;
+    private MoreInformationModel moreInformation;
 
 }

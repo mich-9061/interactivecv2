@@ -13,9 +13,9 @@ import lombok.ToString;
 @AllArgsConstructor
 public class WorkBulletpointModel extends GenericModel{
 
-  private String personId;
   private String workId;
   private String jobDescription;
   private int position;
+  private MoreInformationModel moreInformation;
     
 }

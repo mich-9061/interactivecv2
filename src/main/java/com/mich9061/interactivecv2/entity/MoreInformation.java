@@ -22,9 +22,7 @@ public class MoreInformation{
         @Id
         @GeneratedValue
         private Long id;
-        private Long personId;
         private String description;
-        private int position;
 
     
 }

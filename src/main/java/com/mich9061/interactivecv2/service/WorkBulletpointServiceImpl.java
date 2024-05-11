@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.WorkBulletpointRepository;
 public class WorkBulletpointServiceImpl implements WorkBulletpointService{
 
     private WorkBulletpointRepository workBulletpointRepository;
+    private MoreInformationService moreInformationService;
 
     public List<WorkBulletpointModel> getWorkBulletpoints(Long workId) {
         return workBulletpointRepository.findByWorkIdOrderByPosition(workId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -21,10 +22,10 @@ public class WorkBulletpointServiceImpl implements WorkBulletpointService{
     private WorkBulletpointModel fromEntityToModel(WorkBulletpoint entity) {
         if(entity != null) {
             WorkBulletpointModel workBulletpoint = new WorkBulletpointModel(
-                entity.getPersonId().toString(),
                 entity.getWorkId().toString(),
                 entity.getJobDescription(),
-                entity.getPosition()
+                entity.getPosition(),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             workBulletpoint.setId(entity.getId());
             return workBulletpoint;
@@ -34,8 +35,11 @@ public class WorkBulletpointServiceImpl implements WorkBulletpointService{
         }
     } 
 
-    public WorkBulletpointServiceImpl(WorkBulletpointRepository workBulletpointRepository) {
+    public WorkBulletpointServiceImpl(
+        WorkBulletpointRepository workBulletpointRepository,
+        MoreInformationService moreInformationService) {
         this.workBulletpointRepository = workBulletpointRepository;
+        this.moreInformationService = moreInformationService;
     }
 
 }

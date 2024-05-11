@@ -1,8 +1,11 @@
 package com.mich9061.interactivecv2.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +27,7 @@ public class Language {
         @GeneratedValue
         private Long id;
         private Long personId;
-        private String language;
+        private String languageName;
         private int writtenLevel;
         private int spokenLevel;
         private int readLevel;
@@ -36,5 +39,8 @@ public class Language {
         private int abroadExperience;
         private Integer abroadMonths; //perché può essere anche null sul db
         private int position;
+        @OneToOne(fetch = FetchType.LAZY, optional = true)
+        @JoinColumn(name = "more_information_id", nullable = true)
+        private MoreInformation moreInformation;
 
 }

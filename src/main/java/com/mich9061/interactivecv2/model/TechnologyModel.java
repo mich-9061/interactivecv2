@@ -23,5 +23,6 @@ public class TechnologyModel extends GenericModel{
   private int experienceYears;
   private int projectNumber;
   private int position;
+  private MoreInformationModel moreInformation;
     
 }

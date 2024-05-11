@@ -1,3 +1,7 @@
 databaseChangeLog: 
   - include:
       file: db/changelog/2024-05-10-2100-more-info-study.yaml
+  - include:
+      file: db/changelog/2024-05-11-2000-more-info-all-tables.yaml
+  - include:
+      file: db/changelog/2024-05-11-2030-remove-unused.yaml

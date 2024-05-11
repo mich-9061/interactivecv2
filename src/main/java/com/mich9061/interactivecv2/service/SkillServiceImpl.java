@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.SkillRepository;
 public class SkillServiceImpl implements SkillService{
 
     private SkillRepository workRepository;
+    private MoreInformationService moreInformationService;
 
     public List<SkillModel> getSkills(Long personId) {
         return workRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -23,7 +24,8 @@ public class SkillServiceImpl implements SkillService{
             SkillModel work = new SkillModel(
                 entity.getPersonId().toString(),
                 entity.getDescription(),
-                entity.getPosition()
+                entity.getPosition(),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             work.setId(entity.getId());
             return work;
@@ -34,8 +36,10 @@ public class SkillServiceImpl implements SkillService{
     } 
 
     public SkillServiceImpl(
-        SkillRepository workRepository) {
+        SkillRepository workRepository,
+        MoreInformationService moreInformationService) {
         this.workRepository = workRepository;
+        this.moreInformationService = moreInformationService;
     }
 
 }

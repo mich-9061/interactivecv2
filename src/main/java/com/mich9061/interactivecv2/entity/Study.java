@@ -37,7 +37,7 @@ public class Study{
         // @Column(name="type")
         private String type;
         private int position;
-        @OneToOne(fetch = FetchType.EAGER, optional = true)
+        @OneToOne(fetch = FetchType.LAZY, optional = true)
         @JoinColumn(name = "more_information_id", nullable = true)
         private MoreInformation moreInformation;
     

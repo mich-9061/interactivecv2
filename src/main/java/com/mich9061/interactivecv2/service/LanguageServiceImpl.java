@@ -13,6 +13,7 @@ import com.mich9061.interactivecv2.repository.LanguageRepository;
 public class LanguageServiceImpl implements LanguageService{
 
     private LanguageRepository languageRepository;
+    private MoreInformationService moreInformationService;
 
     public List<LanguageModel> getLanguages(Long personId) {
         return languageRepository.findByPersonIdOrderByPosition(personId).stream().map(this::fromEntityToModel).collect(Collectors.toList());
@@ -22,7 +23,7 @@ public class LanguageServiceImpl implements LanguageService{
         if(entity != null) {
             LanguageModel language = new LanguageModel(
                 entity.getPersonId().toString(),
-                entity.getLanguage(),
+                entity.getLanguageName(),
                 entity.getWrittenLevel(),
                 entity.getSpokenLevel(),
                 entity.getReadLevel(),
@@ -33,7 +34,8 @@ public class LanguageServiceImpl implements LanguageService{
                 entity.getCertificationDate() != null ? entity.getCertificationDate().toString() : null,
                 entity.getAbroadExperience() == 1,
                 entity.getAbroadExperience() == 1 && entity.getAbroadMonths() > 0 ? entity.getAbroadMonths() : 0,
-                entity.getPosition()
+                entity.getPosition(),
+                entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
             language.setId(entity.getId());
             return language;
@@ -43,8 +45,11 @@ public class LanguageServiceImpl implements LanguageService{
         }
     } 
 
-    public LanguageServiceImpl(LanguageRepository languageRepository) {
+    public LanguageServiceImpl(
+        LanguageRepository languageRepository,
+        MoreInformationService moreInformationService) {
         this.languageRepository = languageRepository;
+        this.moreInformationService = moreInformationService;
     }
 
 }
