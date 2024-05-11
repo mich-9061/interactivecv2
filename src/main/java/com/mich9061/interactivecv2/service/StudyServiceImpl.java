@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.mich9061.interactivecv2.entity.Study;
-import com.mich9061.interactivecv2.model.MoreInformationModel;
 import com.mich9061.interactivecv2.model.StudyModel;
 import com.mich9061.interactivecv2.repository.StudyRepository;
 import com.mich9061.interactivecv2.utils.MyUtils;
