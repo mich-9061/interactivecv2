@@ -1,15 +1,17 @@
 import ResumeModel from 'Frontend/generated/com/mich9061/interactivecv2/model/ResumeModel';
 import { ResumeController } from 'Frontend/generated/endpoints';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { MyHeader } from './MyHeader';
+import { Link, useParams } from 'react-router-dom';
 import { ContactInformation } from './ContactInformation';
-import { Work } from './Work';
-import { Technology } from './Technology';
-import { Study } from './Study';
-import { Skill } from './Skill';
 import { Hobby } from './Hobby';
 import { Language } from './Language';
+import { MyHeader } from './MyHeader';
+import { Skill } from './Skill';
+import { Study } from './Study';
+import { Technology } from './Technology';
+import { Work } from './Work';
+import { LinkedInLogo } from '../icons/LinkedInLogo';
+import { GithubLogo } from '../icons/GithubLogo';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
@@ -48,11 +50,11 @@ export default function Resume() {
                                     }
                                 </div>
                             </div>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col bg-gray-100 pb-6">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                     Languages
                                 </div>
-                                <div className="grid grid-cols-3 gap-2 bg-gray-100">
+                                <div className="grid grid-cols-3 gap-2">
                                     {resume?.personalInformation?.languages?.map(language => {
                                             return (
                                                 <Language {...language} 
@@ -69,12 +71,33 @@ export default function Resume() {
                                     }
                                 </div>
                             </div>
-                            <div className="flex flex-row justify-around items-baseline bg-gray-100 grow">
-                                <div className=" bg-orange-600 h-fit">
-                                    PHOTO
+                            <div className="flex flex-col bg-gray-100">
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
+                                    Profile and Portfolio
                                 </div>
-                                <div className=" bg-orange-600">
-                                    QR CODE
+                                <div className="flex flex-row justify-between bg-gray-100 grow">
+                                    <div className="grid grid-rows-2">
+                                        <div className="grid grid-cols-4">
+                                            <LinkedInLogo/>
+                                            <div className='text-lg lg:text-xl italic font-name col-span-3'>
+                                                {resume?.personalInformation?.contactInformation?.linkedinProfile}
+                                            </div>
+                                        </div>
+                                        <div className="grid grid-cols-5">
+                                            <GithubLogo/>
+                                            <div className='text-lg lg:text-xl italic font-name col-span-3'>
+                                                {resume?.personalInformation?.contactInformation?.githubProfile}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className=" bg-orange-600 p-3 mr-12 flex flex-col text-lg lg:text-xl italic font-name text-white text-center mt-24 self-baseline">
+                                        <img className='h-40 w-40 self-center'
+                                            src={`data:image/jpeg;base64,${resume?.personalInformation?.images?.[0]?.image}`} alt={resume?.personalInformation?.images?.[0]?.moreInformation?.description}/>
+                                        <Link className='mt-1.5 hover:underline'
+                                            to={resume?.personalInformation?.contactInformation?.website? resume?.personalInformation?.contactInformation?.website : ''}>  
+                                            {resume?.personalInformation?.contactInformation?.website}
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

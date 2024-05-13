@@ -21,6 +21,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     private SkillService skillService;
     private HobbyService hobbyService;
     private DrivingLicenseService drivingLicenseService;
+    private ImageService imageService;
 
     public PersonalInformationModel getPersonalInformation(Long id) {
         return fromEntityToModel(id != null ? personalInformationRepository.findById(id) : Optional.empty());
@@ -28,6 +29,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
 
     private PersonalInformationModel fromEntityToModel(Optional<PersonalInformation> entity) {
         if(entity.isPresent()) {
+            Long id = entity.get().getId();
             PersonalInformationModel personalInformation = new PersonalInformationModel(
                 entity.get().getFirstName(),
                 entity.get().getSecondName(),
@@ -38,15 +40,16 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
                 entity.get().getPostalCode(),
                 entity.get().getDescription(),
                 contactInformationService.getContactInformation(entity.get().getContactInformation().getId()),
-                studyService.getStudies(entity.get().getId()),
-                workService.getWorks(entity.get().getId()),
-                languageService.getLanguages(entity.get().getId()),
-                technologyService.getTechnologies(entity.get().getId()),
-                skillService.getSkills(entity.get().getId()),
-                hobbyService.getHobbies(entity.get().getId()),
-                drivingLicenseService.getDrivingLicenses(entity.get().getId())
+                studyService.getStudies(id),
+                workService.getWorks(id),
+                languageService.getLanguages(id),
+                technologyService.getTechnologies(id),
+                skillService.getSkills(id),
+                hobbyService.getHobbies(id),
+                drivingLicenseService.getDrivingLicenses(id),
+                imageService.getImages(id)
             );
-            personalInformation.setId(entity.get().getId());
+            personalInformation.setId(id);
             return personalInformation;
         } else {
             //logga qualcosa o throws
@@ -65,7 +68,8 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
         TechnologyService technologyService,
         SkillService skillService,
         HobbyService hobbyService,
-        DrivingLicenseService drivingLicenseService) {
+        DrivingLicenseService drivingLicenseService,
+        ImageService imageService) {
         this.personalInformationRepository = personalInformationRepository;
         this.contactInformationService = contactInformationService;
         this.studyService = studyService;
@@ -75,6 +79,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
         this.skillService = skillService;
         this.hobbyService = hobbyService;
         this.drivingLicenseService = drivingLicenseService;
+        this.imageService = imageService;
     }
 
 }

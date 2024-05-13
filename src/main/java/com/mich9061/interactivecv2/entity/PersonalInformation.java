@@ -60,5 +60,8 @@ public class PersonalInformation{
         @OneToMany(fetch = FetchType.EAGER)
         @JoinColumn(name = "personId")
         private List<Hobby> drivingLicenses;
+        @OneToMany(fetch = FetchType.LAZY)
+        @JoinColumn(name = "personId")
+        private List<Image> images;
 
 }

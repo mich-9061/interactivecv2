@@ -21,14 +21,14 @@ public class DrivingLicenseServiceImpl implements DrivingLicenseService{
 
     private DrivingLicenseModel fromEntityToModel(DrivingLicense entity) {
         if(entity != null) {
-            DrivingLicenseModel work = new DrivingLicenseModel(
+            DrivingLicenseModel license = new DrivingLicenseModel(
                 entity.getPersonId().toString(),
                 entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null,
                 entity.getType(),
                 entity.getPosition()
             );
-            work.setId(entity.getId());
-            return work;
+            license.setId(entity.getId());
+            return license;
         } else {
             //logga qualcosa o throws
             return null;

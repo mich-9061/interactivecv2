@@ -19,11 +19,11 @@ public class MoreInformationServiceImpl implements MoreInformationService{
 
     private MoreInformationModel fromEntityToModel(Optional<MoreInformation> entity) {
         if(entity.isPresent()) {
-            MoreInformationModel work = new MoreInformationModel(
+            MoreInformationModel information = new MoreInformationModel(
                 entity.get().getDescription()
             );
-            work.setId(entity.get().getId());
-            return work;
+            information.setId(entity.get().getId());
+            return information;
         } else {
             //logga qualcosa o throws
             return null;

@@ -21,14 +21,14 @@ public class SkillServiceImpl implements SkillService{
 
     private SkillModel fromEntityToModel(Skill entity) {
         if(entity != null) {
-            SkillModel work = new SkillModel(
+            SkillModel skill = new SkillModel(
                 entity.getPersonId().toString(),
                 entity.getDescription(),
                 entity.getPosition(),
                 entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null
             );
-            work.setId(entity.getId());
-            return work;
+            skill.setId(entity.getId());
+            return skill;
         } else {
             //logga qualcosa o throws
             return null;

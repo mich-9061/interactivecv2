@@ -18,10 +18,7 @@ export const ContactInformation = (props: ContactInformationModel) => {
                 </div>
                 <div className="flex flex-col col-span-2">
                     <div>
-                        { props.homeAddress }, { props.homeCity },
-                    </div>
-                    <div>
-                        { props.homePostalCode }, { props.homeCountry }
+                        { props.homeCity }, { props.homePostalCode }, { props.homeCountry }
                     </div>
                 </div>
             </div>

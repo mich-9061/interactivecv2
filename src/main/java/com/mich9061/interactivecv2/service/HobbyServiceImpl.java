@@ -21,14 +21,14 @@ public class HobbyServiceImpl implements HobbyService{
 
     private HobbyModel fromEntityToModel(Hobby entity) {
         if(entity != null) {
-            HobbyModel work = new HobbyModel(
+            HobbyModel hobby = new HobbyModel(
                 entity.getPersonId().toString(),
                 entity.getMoreInformation() != null ? moreInformationService.getMoreInformation(entity.getMoreInformation().getId()) : null,
                 entity.getDescription(),
                 entity.getPosition()
             );
-            work.setId(entity.getId());
-            return work;
+            hobby.setId(entity.getId());
+            return hobby;
         } else {
             //logga qualcosa o throws
             return null;
