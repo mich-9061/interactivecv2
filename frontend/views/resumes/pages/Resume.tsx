@@ -2,14 +2,14 @@ import ResumeModel from 'Frontend/generated/com/mich9061/interactivecv2/model/Re
 import { ResumeController } from 'Frontend/generated/endpoints';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ContactInformation } from './ContactInformation';
-import { Hobby } from './Hobby';
-import { Language } from './Language';
-import { MyHeader } from './MyHeader';
-import { Skill } from './Skill';
-import { Study } from './Study';
-import { Technology } from './Technology';
-import { Work } from './Work';
+import { ContactInformation } from '../components/ContactInformation';
+import { Hobby } from '../components/Hobby';
+import { Language } from '../components/Language';
+import { MyHeader } from '../components/MyHeader';
+import { Skill } from '../components/Skill';
+import { Study } from '../components/Study';
+import { Technology } from '../components/Technology';
+import { Work } from '../components/Work';
 import { LinkedInLogo } from '../icons/LinkedInLogo';
 import { GithubLogo } from '../icons/GithubLogo';
 
@@ -21,10 +21,10 @@ export default function Resume() {
     }, []);
 
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-center w-full">
             {resume?.personalInformation ? (
-                <div className="flex flex-col w-full max-w-7xl">
-                    <div className="flex flex-row">
+                <div className="flex flex-col w-full">
+                    <div className="flex flex-row w-full">
                         <div className="w-full lg:w-[47%]">
                             <MyHeader {...resume.personalInformation} />
                             <ContactInformation {...resume.personalInformation.contactInformation} />
@@ -71,26 +71,28 @@ export default function Resume() {
                                     }
                                 </div>
                             </div>
-                            <div className="flex flex-col bg-gray-100">
+                            <div className="flex flex-col bg-gray-100 grow">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                     Profile and Portfolio
                                 </div>
-                                <div className="flex flex-row justify-between bg-gray-100 grow">
+                                <div className="flex flex-row h-[350px]">
                                     <div className="grid grid-rows-2">
                                         <div className="grid grid-cols-4">
                                             <LinkedInLogo/>
-                                            <div className='text-lg lg:text-xl italic font-name col-span-3'>
-                                                {resume?.personalInformation?.contactInformation?.linkedinProfile}
-                                            </div>
+                                            <Link className='text-lg lg:text-xl italic font-name col-span-3 hover:underline'
+                                                to={resume?.personalInformation?.contactInformation?.linkedinProfile ? resume?.personalInformation?.contactInformation?.linkedinProfile : ''}>
+                                                {resume?.personalInformation?.firstName} {resume?.personalInformation?.secondName}
+                                            </Link>
                                         </div>
-                                        <div className="grid grid-cols-5">
+                                        <div className="grid grid-cols-4">
                                             <GithubLogo/>
-                                            <div className='text-lg lg:text-xl italic font-name col-span-3'>
+                                            <Link className='text-lg lg:text-xl italic font-name col-span-3 hover:underline'
+                                                to={`https://github.com/${resume?.personalInformation?.contactInformation?.githubProfile}`}>
                                                 {resume?.personalInformation?.contactInformation?.githubProfile}
-                                            </div>
+                                            </Link>
                                         </div>
                                     </div>
-                                    <div className=" bg-orange-600 p-3 mr-12 flex flex-col text-lg lg:text-xl italic font-name text-white text-center mt-24 self-baseline">
+                                    <div className=" bg-orange-600 p-3 mr-12 flex flex-col text-lg lg:text-xl italic font-name text-white text-center self-end">
                                         <img className='h-40 w-40 self-center'
                                             src={`data:image/jpeg;base64,${resume?.personalInformation?.images?.[0]?.image}`} alt={resume?.personalInformation?.images?.[0]?.moreInformation?.description}/>
                                         <Link className='mt-1.5 hover:underline'
@@ -135,7 +137,7 @@ export default function Resume() {
                                     }
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-3">
                                         Hobby
                                     </div>
                                     {resume?.personalInformation?.hobbies?.map(hobby => {
@@ -146,33 +148,8 @@ export default function Resume() {
                                         })
                                     }
                                 </div>
-                                {/* <div className="flex flex-col text-lg lg:text-xl mt-2">
-                                    <div className="text-orange-600">
-                                        Test lista Driving Licenses:
-                                    </div>
-                                    {resume?.personalInformation?.drivingLicenses?.map(drivingLicense => {
-                                            return (
-                                                <div key={drivingLicense?.id}>
-                                                    <div className="">
-                                                        { drivingLicense?.type }
-                                                    </div>
-                                                    {drivingLicense?.moreInformation && (
-                                                        <div>
-                                                            <div className="ml-3">
-                                                                Descrizione: {drivingLicense?.moreInformation.description}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div> */}
                             </div>
                         </div>
-                    </div>
-                    <div className='w-full h-9 bg-orange-600 px-6 py-2'>
-
                     </div>
                 </div>  
             ) : <p className='text-center text-lg lg:text-xl font-title'>Resume not Found</p>}
