@@ -1,7 +1,7 @@
 const AboutInteractiveCV = () => {
     return (
-      <div className="bg-gray-100 w-full">
-        <div className="bg-orange-600 text-white text-center font-title lowercase px-6 text-2xl">
+      <div className="bg-gray-100 w-full h-[700px]">
+        <div className="bg-orange-600 text-white text-center font-title lowercase px-6 py-2 text-2xl">
           About InteractiveCV
         </div>
         <div className="p-8 font-paragraph">
@@ -15,6 +15,7 @@ const AboutInteractiveCV = () => {
             In the future, other functions will be implemented, such as:
           </p>
           <ul className="list-disc list-inside mb-4">
+            <li>Better throwing management</li>
             <li>Translation into Italian</li>
             <li>Back-office management with react-admin</li>
             <li>Permission management with registration, login, and user profiles</li>

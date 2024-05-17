@@ -7,7 +7,7 @@ export const Hobby = (props: HobbyModel) => {
             <div className="text-lg lg:text-xl italic font-name">
                 { props?.description }
             </div>
-            <div className="lg:text-lg font-paragraph">
+            <div className="lg:text-lg font-paragraph font-light">
                 { props?.moreInformation?.description }
             </div>
         </div>

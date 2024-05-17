@@ -13,7 +13,7 @@ export const Study = (props: StudyModel) => {
             <div className="text-lg lg:text-xl italic font-name">
                 { props?.school }
             </div>
-            <div className="lg:text-lg font-paragraph">
+            <div className="lg:text-lg font-paragraph font-light">
                 { props?.moreInformation?.description }
             </div>
         </div>

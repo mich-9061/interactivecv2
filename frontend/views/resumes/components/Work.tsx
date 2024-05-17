@@ -13,13 +13,13 @@ export const Work = (props: WorkModel) => {
             <div className="text-lg lg:text-xl italic font-name">
                 { props?.company }
             </div>
-            <div className="border-l-4 border-gray-300 pl-3">
+            <ul className="list-disc pl-3">
                 {props?.workBulletpoints?.map(bulletPoint => {
                     return (
-                        <p key={bulletPoint?.id} className="lg:text-lg font-paragraph mx-1">{bulletPoint?.jobDescription}</p>
+                        <li key={bulletPoint?.id} className="lg:text-lg font-paragraph font-light mx-1">{bulletPoint?.jobDescription}</li>
                     )}
                 )}
-            </div>
+            </ul>
         </div>
     )
 

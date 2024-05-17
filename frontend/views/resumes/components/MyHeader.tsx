@@ -13,7 +13,7 @@ export const MyHeader = (props: PersonalInformationModel) => {
             <div className="text-2xl lg:text-4xl text-white bg-gray-800 w-full lg:w-4/6 text-center py-1 lowercase font-title mt-6">
                 { props.works?.[0]?.workTitle ? props.works[0].workTitle : 'Human being'}
             </div>
-            <div className="text-lg lg:text-xl font-paragraph pt-6 lg:pr-12">
+            <div className="lg:text-lg font-paragraph text-justify font-thin pt-6 lg:pr-12">
                 { props.description }
             </div>
         </div>

@@ -37,20 +37,22 @@ export default function Resume() {
                                 )}
                             )}
                             <div className="flex flex-col">
-                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2">
-                                    Skills
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2 list-disc">
+                                    Soft Skills
                                 </div>
-                                <div className="bg-gray-100 pt-4 pb-6">
-                                    {resume?.personalInformation?.skills?.map(skill => {
-                                            return (
-                                                <Skill {...skill} 
-                                                    position={skill?.position ?? 0} />
-                                            )
-                                        })
-                                    }
+                                <div className="bg-gray-100 pt-4 pb-6 px-6">
+                                    <ul className="pl-3 list-disc">
+                                        {resume?.personalInformation?.skills?.map(skill => {
+                                                return (
+                                                    <Skill {...skill} 
+                                                        position={skill?.position ?? 0} />
+                                                )
+                                            })
+                                        }
+                                    </ul>
                                 </div>
                             </div>
-                            <div className="flex flex-col bg-gray-100 pb-6">
+                            <div className="flex flex-col bg-gray-100 pb-6 h-[400px]">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                     Languages
                                 </div>
@@ -70,36 +72,8 @@ export default function Resume() {
                                         })
                                     }
                                 </div>
-                            </div>
-                            <div className="flex flex-col bg-gray-100 grow">
-                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
-                                    Profile and Portfolio
-                                </div>
-                                <div className="flex flex-row h-[350px]">
-                                    <div className="grid grid-rows-2">
-                                        <div className="grid grid-cols-4">
-                                            <LinkedInLogo/>
-                                            <Link className='text-lg lg:text-xl italic font-name col-span-3 hover:underline'
-                                                to={resume?.personalInformation?.contactInformation?.linkedinProfile ? resume?.personalInformation?.contactInformation?.linkedinProfile : ''}>
-                                                {resume?.personalInformation?.firstName} {resume?.personalInformation?.secondName}
-                                            </Link>
-                                        </div>
-                                        <div className="grid grid-cols-4">
-                                            <GithubLogo/>
-                                            <Link className='text-lg lg:text-xl italic font-name col-span-3 hover:underline'
-                                                to={`https://github.com/${resume?.personalInformation?.contactInformation?.githubProfile}`}>
-                                                {resume?.personalInformation?.contactInformation?.githubProfile}
-                                            </Link>
-                                        </div>
-                                    </div>
-                                    <div className=" bg-orange-600 p-3 mr-12 flex flex-col text-lg lg:text-xl italic font-name text-white text-center self-end">
-                                        <img className='h-40 w-40 self-center'
-                                            src={`data:image/jpeg;base64,${resume?.personalInformation?.images?.[0]?.image}`} alt={resume?.personalInformation?.images?.[0]?.moreInformation?.description}/>
-                                        <Link className='mt-1.5 hover:underline'
-                                            to={resume?.personalInformation?.contactInformation?.website? resume?.personalInformation?.contactInformation?.website : ''}>  
-                                            {resume?.personalInformation?.contactInformation?.website}
-                                        </Link>
-                                    </div>
+                                <div className="w-full text-sm lg:text-md mt-28 font-nome italic px-6 py-2 mb-2">
+                                    {resume?.personalInformation?.contactInformation?.moreInformation?.description}
                                 </div>
                             </div>
                         </div>
@@ -147,6 +121,41 @@ export default function Resume() {
                                             )
                                         })
                                     }
+                                </div>
+                                <div className="flex flex-col grow">
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
+                                        Profile and Portfolio
+                                    </div>
+                                    <div className="flex flex-row h-[256px] justify-between px-6">
+                                        <div className="grid grid-rows-2">
+                                            <div className="grid grid-cols-4">
+                                                <div className="self-center justify-self-center">
+                                                    <LinkedInLogo/>
+                                                </div>
+                                                <Link className='text-lg lg:text-xl italic font-name font-light col-span-3 hover:underline self-center justify-self-right'
+                                                    to={resume?.personalInformation?.contactInformation?.linkedinProfile ? resume?.personalInformation?.contactInformation?.linkedinProfile : ''}>
+                                                    {resume?.personalInformation?.firstName} {resume?.personalInformation?.secondName}
+                                                </Link>
+                                            </div>
+                                            <div className="grid grid-cols-4">
+                                                <div className="self-center justify-self-center">
+                                                    <GithubLogo/>
+                                                </div>
+                                                <Link className='text-lg lg:text-xl italic font-name font-light col-span-3 hover:underline self-center justify-self-right'
+                                                    to={`https://github.com/${resume?.personalInformation?.contactInformation?.githubProfile}`}>
+                                                    {resume?.personalInformation?.contactInformation?.githubProfile}
+                                                </Link>
+                                            </div>
+                                        </div>
+                                        <div className=" bg-orange-600 p-3 mr-6 flex flex-col lg:text-lg italic font-name text-white text-center self-end">
+                                            <img className='h-32 w-32 self-center'
+                                                src={`data:image/jpeg;base64,${resume?.personalInformation?.images?.[0]?.image}`} alt={resume?.personalInformation?.images?.[0]?.moreInformation?.description}/>
+                                            <Link className='mt-1.5 hover:underline'
+                                                to={resume?.personalInformation?.contactInformation?.website? resume?.personalInformation?.contactInformation?.website : ''}>  
+                                                {resume?.personalInformation?.contactInformation?.website}
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
