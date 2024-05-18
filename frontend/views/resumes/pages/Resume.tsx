@@ -15,9 +15,9 @@ import { GithubLogo } from '../icons/GithubLogo';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
-    const { id } = useParams();
+    const { slug } = useParams();
     useEffect(() => {
-        ResumeController.getResumeFromId(Number(id)).then(setResume);
+        ResumeController.getResumeFromSlug(slug).then(setResume);
     }, []);
 
     return (

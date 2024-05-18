@@ -23,6 +23,7 @@ public class PersonalInformationModel extends GenericModel{
     private String country;
     private String postalCode;
     private String description;
+    private String slug;
     private ContactInformationModel contactInformation;
     private List<StudyModel> studies;
     private List<WorkModel> works;

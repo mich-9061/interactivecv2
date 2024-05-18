@@ -14,8 +14,8 @@ public class ResumeController {
     
     private PersonalInformationService personalInformationService;
 
-    public ResumeModel getResumeFromId(Long id){
-        return new ResumeModel(personalInformationService.getPersonalInformation(id));
+    public ResumeModel getResumeFromSlug(String slug){
+        return new ResumeModel(personalInformationService.getPersonalInformationFromSlug(slug));
     }
 
     @Autowired
