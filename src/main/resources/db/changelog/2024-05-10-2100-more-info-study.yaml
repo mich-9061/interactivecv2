@@ -1,0 +1,30 @@
+databaseChangeLog:
+- changeSet:
+    id: 2024-05-10-2100-more-info-study-1
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.1
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: study
+- changeSet:
+    id: 2024-05-10-2100-more-info-study-2
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.1
+    - addForeignKeyConstraint:
+            baseTableName: study
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_study_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false

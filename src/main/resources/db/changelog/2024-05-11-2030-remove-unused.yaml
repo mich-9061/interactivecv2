@@ -1,0 +1,45 @@
+databaseChangeLog:
+- changeSet:
+    id: 2024-05-11-2030-remove-unused-1
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.3
+    -  dropForeignKeyConstraint:
+        baseTableName: work_bulletpoint
+        constraintName: fk_work_bulletpoint_person_id
+- changeSet:
+    id: 2024-05-11-2030-remove-unused-2
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.3
+    -  dropForeignKeyConstraint:
+        baseTableName: more_information
+        constraintName: fk_more_information_person_id
+- changeSet:
+    id: 2024-05-11-2030-remove-unused-3
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.3
+    -  dropColumn:
+        columnName: id
+        columns:
+        -  column:
+            name:  person_id
+        tableName:  work_bulletpoint
+- changeSet:
+    id: 2024-05-11-2030-remove-unused-4
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.3
+    -  dropColumn:
+        columnName: id
+        columns:
+        -  column:
+            name:  person_id
+        -  column:
+            name:  position
+        tableName:  more_information

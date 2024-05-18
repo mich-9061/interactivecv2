@@ -2,7 +2,13 @@
 export default {
   content: ["./frontend/index.html", "./frontend/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        title: ['Comfortaa'],
+        name: ['Roboto Slab'],
+        paragraph: ['Oxygen']
+      }
+    },
   },
   plugins: [],
 }

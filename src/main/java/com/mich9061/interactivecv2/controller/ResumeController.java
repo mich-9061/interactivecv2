@@ -3,7 +3,7 @@ package com.mich9061.interactivecv2.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mich9061.interactivecv2.model.ResumeModel;
-import com.mich9061.interactivecv2.service.PersonalInformationServiceImpl;
+import com.mich9061.interactivecv2.service.PersonalInformationService;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import dev.hilla.BrowserCallable;
@@ -12,14 +12,14 @@ import dev.hilla.BrowserCallable;
 @BrowserCallable
 public class ResumeController {
     
-    private PersonalInformationServiceImpl personalInformationService;
+    private PersonalInformationService personalInformationService;
 
     public ResumeModel getResumeFromId(Long id){
         return new ResumeModel(personalInformationService.getPersonalInformation(id));
     }
 
     @Autowired
-    public ResumeController(PersonalInformationServiceImpl personalInformationService){
+    public ResumeController(PersonalInformationService personalInformationService){
         this.personalInformationService = personalInformationService;
     }
 

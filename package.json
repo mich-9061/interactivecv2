@@ -3,6 +3,8 @@
   "license": "GPL-3.0-only",
   "type": "module",
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@hilla/form": "2.5.5",
     "@hilla/frontend": "2.5.5",
     "@hilla/generator-typescript-cli": "2.5.5",
@@ -18,6 +20,7 @@
     "@hilla/react-components": "2.3.0",
     "@hilla/react-crud": "2.5.5",
     "@hilla/react-form": "2.5.5",
+    "@mui/material": "^5.15.17",
     "@polymer/polymer": "3.5.1",
     "@vaadin/bundles": "24.3.0",
     "@vaadin/common-frontend": "0.0.19",
@@ -95,7 +98,7 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "3ea896325116920837996c28855f0455941f8c959a37e1db606ed7798e98bd89"
+    "hash": "f3f5a953c959ecb4bb761985d23a55f60fa1dc65b83529668fb2d12f8b391aa9"
   },
   "overrides": {
     "classnames": "$classnames",
@@ -122,6 +125,9 @@
     "@hilla/generator-typescript-plugin-subtypes": "$@hilla/generator-typescript-plugin-subtypes",
     "@hilla/react-crud": "$@hilla/react-crud",
     "@hilla/generator-typescript-plugin-backbone": "$@hilla/generator-typescript-plugin-backbone",
-    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli"
+    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli",
+    "@emotion/react": "$@emotion/react",
+    "@emotion/styled": "$@emotion/styled",
+    "@mui/material": "$@mui/material"
   }
 }

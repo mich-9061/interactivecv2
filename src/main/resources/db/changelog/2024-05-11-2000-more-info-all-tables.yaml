@@ -1,0 +1,204 @@
+databaseChangeLog:
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-1
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: contact_information
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-2
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: contact_information
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_contact_information_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-3
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: image
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-4
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: image
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_image_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-5
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: language
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-6
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: language
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_language_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-7
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: skill
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-8
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: skill
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_skill_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-9
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: technology
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-10
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: technology
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_technology_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-11
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: work
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-12
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: work
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_work_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-13
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addColumn: 
+        columns:
+        - column:
+            name: more_information_id
+            type: int
+            constraints:
+              nullable: true
+        tableName: work_bulletpoint
+- changeSet:
+    id: 2024-05-11-2000-more-info-all-tables-14
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.2
+    - addForeignKeyConstraint:
+            baseTableName: work_bulletpoint
+            baseColumnNames: more_information_id
+            referencedTableName: more_information
+            referencedColumnNames: id
+            constraintName: fk_work_bulletpoint_more_information_id
+            validate: true
+            deferrable: false
+            initiallyDeferred: false
