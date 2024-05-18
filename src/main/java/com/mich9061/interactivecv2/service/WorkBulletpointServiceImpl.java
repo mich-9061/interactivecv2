@@ -30,7 +30,7 @@ public class WorkBulletpointServiceImpl implements WorkBulletpointService{
             workBulletpoint.setId(entity.getId());
             return workBulletpoint;
         } else {
-            //logga qualcosa o throws
+           //log or throws
             return null;
         }
     } 

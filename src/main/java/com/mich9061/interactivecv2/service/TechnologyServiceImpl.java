@@ -37,7 +37,7 @@ public class TechnologyServiceImpl implements TechnologyService{
             techology.setId(entity.getId());
             return techology;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

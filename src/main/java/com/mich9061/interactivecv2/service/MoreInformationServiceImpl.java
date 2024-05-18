@@ -25,7 +25,7 @@ public class MoreInformationServiceImpl implements MoreInformationService{
             information.setId(entity.get().getId());
             return information;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

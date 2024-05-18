@@ -53,7 +53,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
             personalInformation.setId(id);
             return personalInformation;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
 

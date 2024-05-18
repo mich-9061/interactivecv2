@@ -17,6 +17,7 @@ const AboutInteractiveCV = () => {
           <ul className="list-disc list-inside mb-4">
             <li>Better throwing management</li>
             <li>Translation into Italian</li>
+            <li>Tests</li>
             <li>Back-office management with react-admin</li>
             <li>Permission management with registration, login, and user profiles</li>
             <li>Management of CVs for multiple people</li>

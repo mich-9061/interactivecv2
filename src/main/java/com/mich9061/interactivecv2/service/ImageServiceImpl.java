@@ -38,7 +38,7 @@ public class ImageServiceImpl implements ImageService{
                 entity.getPosition()
             );
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 
