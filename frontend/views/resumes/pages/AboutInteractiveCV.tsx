@@ -15,6 +15,7 @@ const AboutInteractiveCV = () => {
             In the future, other functions will be implemented, such as:
           </p>
           <ul className="list-disc list-inside mb-4">
+            <li>PDF generation and download</li>
             <li>Better throwing management</li>
             <li>Translation into Italian</li>
             <li>Tests</li>

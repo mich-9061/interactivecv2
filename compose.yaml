@@ -11,7 +11,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-      # scommentare quando voglio rilasciare su docker
+      # uncomment when final release to containerize all in Docker
   # interactivecv:
   #   image: interactivecv
   #   build:

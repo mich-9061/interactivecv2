@@ -12,13 +12,19 @@ import { Technology } from '../components/Technology';
 import { Work } from '../components/Work';
 import { LinkedInLogo } from '../icons/LinkedInLogo';
 import { GithubLogo } from '../icons/GithubLogo';
+import { useSlug } from 'Frontend/SlugContext';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
     const { slug } = useParams();
+    const { setSlug } = useSlug();
+
     useEffect(() => {
-        ResumeController.getResumeFromSlug(slug).then(setResume);
-    }, []);
+        if (slug) {
+            setSlug(slug);
+            ResumeController.getResumeFromSlug(slug).then(setResume);
+        }
+    }, [slug, setSlug]);
 
     return (
         <div className="flex justify-center w-full">
