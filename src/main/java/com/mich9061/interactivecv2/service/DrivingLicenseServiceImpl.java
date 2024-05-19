@@ -30,7 +30,7 @@ public class DrivingLicenseServiceImpl implements DrivingLicenseService{
             license.setId(entity.getId());
             return license;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

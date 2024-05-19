@@ -30,7 +30,7 @@ public class HobbyServiceImpl implements HobbyService{
             hobby.setId(entity.getId());
             return hobby;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

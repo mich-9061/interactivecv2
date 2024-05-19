@@ -30,7 +30,7 @@ public class SkillServiceImpl implements SkillService{
             skill.setId(entity.getId());
             return skill;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

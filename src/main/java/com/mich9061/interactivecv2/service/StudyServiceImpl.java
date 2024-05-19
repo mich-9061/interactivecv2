@@ -36,7 +36,7 @@ public class StudyServiceImpl implements StudyService{
             study.setId(entity.getId());
             return study;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 

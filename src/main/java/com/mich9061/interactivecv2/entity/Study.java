@@ -33,8 +33,6 @@ public class Study{
         private String school;
         private String vote;
         private String courseTitle;
-        // @Enumerated(EnumType.STRING)
-        // @Column(name="type")
         private String type;
         private int position;
         @OneToOne(fetch = FetchType.LAZY, optional = true)

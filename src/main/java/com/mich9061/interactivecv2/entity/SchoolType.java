@@ -11,13 +11,4 @@ public enum SchoolType {
     CERTIFICATION("certification");
 
     private String value;
-
-    // private SchoolType(String string) {
-    //     this.value = string;
-    // }
-
-    // public String getValue(){
-    //     return this.value;
-    // }
-
 }

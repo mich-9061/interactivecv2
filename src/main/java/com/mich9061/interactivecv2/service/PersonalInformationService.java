@@ -4,6 +4,6 @@ import com.mich9061.interactivecv2.model.PersonalInformationModel;
 
 public interface PersonalInformationService {
     
-    public PersonalInformationModel getPersonalInformation(Long id);
+    public PersonalInformationModel getPersonalInformationFromSlug(String slug);
 
 }

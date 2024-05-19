@@ -37,7 +37,7 @@ public class Language {
         private String certificationLevel;
         private Date certificationDate;
         private int abroadExperience;
-        private Integer abroadMonths; //perché può essere anche null sul db
+        private Integer abroadMonths; //could be null in DB
         private int position;
         @OneToOne(fetch = FetchType.LAZY, optional = true)
         @JoinColumn(name = "more_information_id", nullable = true)

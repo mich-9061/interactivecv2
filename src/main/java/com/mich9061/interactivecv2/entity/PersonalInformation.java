@@ -36,6 +36,7 @@ public class PersonalInformation{
         private String country;
         private String postalCode;
         private String description;
+        private String slug;
         @OneToOne(fetch = FetchType.EAGER)
         @JoinColumn(name = "contact_information_id")
         private ContactInformation contactInformation;

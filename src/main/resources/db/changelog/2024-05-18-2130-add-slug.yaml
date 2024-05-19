@@ -1,0 +1,32 @@
+databaseChangeLog:
+- changeSet:
+    id: 2024-05-18-2130-add-slug-1
+    author: mich9061
+    changes:
+    - tagDatabase:
+        tag: v1.0.5
+    - addColumn:
+        columns:
+        - column:
+            name:  slug
+            type:  varchar(50)
+        tableName:  personal_information
+- changeSet:
+    id: 2024-05-18-2130-add-slug-2
+    author: mich9061
+    changes:
+      - sql:
+          dbms: mysql
+          endDelimiter: ;
+          sql: "UPDATE personal_information SET slug = CAST(id AS CHAR) WHERE slug IS NULL;"
+- changeSet:
+    id: 2024-05-18-2130-add-slug-3
+    author: mich9061
+    changes:
+      -  addNotNullConstraint:
+          columnDataType:  varchar(50)
+          columnName:  slug
+          tableName:  personal_information
+      -  addUniqueConstraint:
+          columnNames:  slug
+          tableName:  personal_information

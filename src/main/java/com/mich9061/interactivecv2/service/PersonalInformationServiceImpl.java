@@ -23,8 +23,8 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
     private DrivingLicenseService drivingLicenseService;
     private ImageService imageService;
 
-    public PersonalInformationModel getPersonalInformation(Long id) {
-        return fromEntityToModel(id != null ? personalInformationRepository.findById(id) : Optional.empty());
+    public PersonalInformationModel getPersonalInformationFromSlug(String slug) {
+        return fromEntityToModel(slug != null ? personalInformationRepository.findBySlug(slug) : Optional.empty());
     }
 
     private PersonalInformationModel fromEntityToModel(Optional<PersonalInformation> entity) {
@@ -39,6 +39,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
                 entity.get().getCountry(),
                 entity.get().getPostalCode(),
                 entity.get().getDescription(),
+                entity.get().getSlug(),
                 contactInformationService.getContactInformation(entity.get().getContactInformation().getId()),
                 studyService.getStudies(id),
                 workService.getWorks(id),
@@ -52,7 +53,7 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
             personalInformation.setId(id);
             return personalInformation;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
 

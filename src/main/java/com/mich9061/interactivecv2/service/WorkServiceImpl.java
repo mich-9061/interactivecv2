@@ -36,7 +36,7 @@ public class WorkServiceImpl implements WorkService{
             work.setId(entity.getId());
             return work;
         } else {
-            //logga qualcosa o throws
+            //log or throws
             return null;
         }
     } 
