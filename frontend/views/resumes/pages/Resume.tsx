@@ -58,7 +58,7 @@ export default function Resume() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="flex flex-col bg-gray-100 pb-6 h-[400px]">
+                            <div className="flex flex-col bg-gray-100 pb-6 h-[500px]">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                     Languages
                                 </div>
@@ -78,7 +78,7 @@ export default function Resume() {
                                         })
                                     }
                                 </div>
-                                <div className="w-full text-sm lg:text-md mt-28 font-nome italic px-6 py-2 mb-2">
+                                <div className="w-full text-sm lg:text-md mt-52 font-nome italic px-6 py-2 mb-2">
                                     {resume?.personalInformation?.contactInformation?.moreInformation?.description}
                                 </div>
                             </div>
@@ -106,7 +106,7 @@ export default function Resume() {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
-                                        Education
+                                        Education and certification
                                     </div>
                                     {resume?.personalInformation?.studies?.map(study => {
                                             return (
@@ -132,7 +132,7 @@ export default function Resume() {
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                         Profile and Portfolio
                                     </div>
-                                    <div className="flex flex-row h-[256px] justify-between px-6">
+                                    <div className="flex flex-row h-[200px] justify-between px-6">
                                         <div className="grid grid-rows-2">
                                             <div className="grid grid-cols-4">
                                                 <div className="self-center justify-self-center">

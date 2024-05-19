@@ -1,4 +1,4 @@
-About InteractiveCV
+# About InteractiveCV
 
 The project started with creating a website that would allow me to bring together the major topics and main development technologies 
 that I know or am learning and explore development phases I have never worked on before. 
@@ -8,17 +8,20 @@ I decided to make my code public (under the GPL-3.0-only license) because it cou
 for anyone who wants to develop a full-stack project that combines the worlds of Java and React due to its low complexity.
 
 In the future, other functions will be implemented, such as:
-    PDF generation and download
-    Better throwing management
-    Translation into Italian
-    Tests
-    Back-office management with react-admin
-    Permission management with registration, login, and user profiles
-    Management of CVs for multiple people
-    Creation of a CV catalog that is explorable with privacy-conscious policies
+<ul>
+    <li>PDF generation and download</li>
+    <li>Better throwing management</li>
+    <li>Translation into Italian</li>
+    <li>Tests</li>
+    <li>Back-office management with react-admin</li>
+    <li>Permission management with registration, login, and user profiles</li>
+    <li>Management of CVs for multiple people</li>
+    <li>Creation of a CV catalog that is explorable with privacy-conscious policies</li>
+</ul>
 
+# About the framework
 
-# Custom project from Hilla
+## Custom project from Hilla
 
 This project can be used as a starting point to create your own Hilla application with Spring Boot.
 It contains all the necessary configuration and some placeholder files to get you started.
