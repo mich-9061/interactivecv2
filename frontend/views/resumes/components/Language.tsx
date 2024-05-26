@@ -2,6 +2,7 @@ import { Stack, withStyles } from "@mui/material";
 import LinearProgress from "@mui/material/LinearProgress/LinearProgress";
 import LanguageModel from "Frontend/generated/com/mich9061/interactivecv2/model/LanguageModel";
 import { useState } from "react";
+import { DownArrow } from "../icons/DownArrow";
 
 export const Language = (props: LanguageModel) => {
     const averageLevel = () => {
@@ -26,11 +27,17 @@ export const Language = (props: LanguageModel) => {
         setIsOpen(!isOpen);
     };
     return (
-        <div className="flex flex-col border border-gray-500 bg-gray-100 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-200">
+        <div className={`flex flex-col border border-gray-500 bg-gray-100 p-3 z-10 transition-transform hover:scale-105 hover:bg-gray-200 overflow-hidden duration-500 ${isOpen ? 'max-h-screen' : 'max-h-[70px]'}`}
+                onClick={handleToggle}>
             <div className="flex flex-row items-baseline justify-between font-name font-semibold">
                 {props.languageName}
                 <div className="lowercase font-light font">{averageLevel()}</div>
             </div>
+            { !isOpen && (
+            <div className="my-2 h-4 w-4 place-self-center animate-bounce">
+                <DownArrow/>
+            </div>
+            )}
             <div className="grid grid-cols-2 items-center justify-between font-paragraph font-sm mt-1">
                 Read
                 <Stack>

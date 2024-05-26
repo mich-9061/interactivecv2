@@ -1,9 +1,16 @@
 import Rating from "@mui/material/Rating/Rating";
 import TechnologyModel from "Frontend/generated/com/mich9061/interactivecv2/model/TechnologyModel"
+import { useState } from "react";
+import { DownArrow } from "../icons/DownArrow";
 
 export const Technology = (props: TechnologyModel) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
     return (
-        <div className="flex flex-col border border-gray-500 bg-gray-800 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-700">
+        <div className={`flex flex-col border border-gray-500 bg-gray-800 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-700 ${isOpen ? 'max-h-screen' : 'max-h-[50px]'}`}
+                onClick={handleToggle}>
             <div className="flex flex-row items-baseline justify-between font-name font-semibold">
                 {props.language}
                 <Rating 
@@ -13,23 +20,29 @@ export const Technology = (props: TechnologyModel) => {
                     value={props.level} 
                     readOnly />
             </div>
-            <div className="text-right font-paragraph font-thin">
-                {getExperienceLabel(props.experienceYears)}
-            </div>
-            <div className="text-right font-paragraph font-thin">
-                {props.projectNumber > 0 && (
-                    <>{props.projectNumber > 1 ? `${props.projectNumber} projects` : `1 project`}</>
-                )} 
-            </div>
-            <div className="text-left uppercase font-paragraph font-thin text-sm">
-                {props.certification && (
-                    <div>
-                        {props.certificationName}
-                        {props.certificationDate}
-                        {props.certificationLevel}
-                    </div>
-                )}
-            </div>
+            { isOpen && (
+                <div className="text-right font-paragraph font-thin">
+                    {getExperienceLabel(props.experienceYears)}
+                </div>
+            )}
+            { isOpen && (
+                <div className="text-right font-paragraph font-thin">
+                    {props.projectNumber > 0 && (
+                        <>{props.projectNumber > 1 ? `${props.projectNumber} projects` : `1 project`}</>
+                    )} 
+                </div>
+            )}
+            { isOpen && (
+                <div className="text-left uppercase font-paragraph font-thin text-sm">
+                    {props.certification && (
+                        <div>
+                            {props.certificationName}
+                            {props.certificationDate}
+                            {props.certificationLevel}
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
     )
 

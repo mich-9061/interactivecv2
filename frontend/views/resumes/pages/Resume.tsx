@@ -1,6 +1,6 @@
 import ResumeModel from 'Frontend/generated/com/mich9061/interactivecv2/model/ResumeModel';
 import { ResumeController } from 'Frontend/generated/endpoints';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ContactInformation } from '../components/ContactInformation';
 import { Hobby } from '../components/Hobby';
@@ -18,6 +18,8 @@ export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
     const { slug } = useParams();
     const { setSlug } = useSlug();
+    const leftBottomSectionRef = useRef<HTMLDivElement>(null);
+    const rightBottomSectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (slug) {
@@ -26,22 +28,38 @@ export default function Resume() {
         }
     }, [slug, setSlug]);
 
+    /* useEffect(() => {
+        const leftBottomSection = leftBottomSectionRef.current;
+        const rightBottomSection = rightBottomSectionRef.current;
+
+        if (leftBottomSection && rightBottomSection) {
+            const leftHeight = leftBottomSection.offsetHeight;
+            const rightHeight = rightBottomSection.offsetHeight;
+            const maxHeight = Math.max(leftHeight, rightHeight);
+
+            leftBottomSection.style.height = `${maxHeight}px`;
+            rightBottomSection.style.height = `${maxHeight}px`;
+        }
+    }, [resume]); */
+
     return (
         <div className="flex justify-center w-full">
             {resume?.personalInformation ? (
                 <div className="flex flex-col w-full">
                     <div className="flex flex-row w-full">
-                        <div className="w-full lg:w-[47%]">
+                        <div className="w-full lg:w-[47%] flex flex-col">
                             <MyHeader {...resume.personalInformation} />
                             <ContactInformation {...resume.personalInformation.contactInformation} />
                             <div className='w-full text-2xl lg:text-4xl text-white font-title bg-orange-600 uppercase p-6'>
                                 WORK EXPERIENCE
                             </div>
-                            {resume.personalInformation.works?.map(work => {
-                                return (
-                                    <Work {...work} position={work?.position ?? 0} />
+                            <div className='flex flex-col space-y-6 bg-gray-100 py-6'>
+                                {resume.personalInformation.works?.map(work => {
+                                    return (
+                                        <Work {...work} position={work?.position ?? 0} />
+                                    )}
                                 )}
-                            )}
+                            </div>
                             <div className="flex flex-col">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2 list-disc">
                                     Soft Skills
@@ -58,8 +76,8 @@ export default function Resume() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="flex flex-col bg-gray-100 pb-6 h-[500px]">
-                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
+                            <div className="flex flex-col bg-gray-100 pb-6 grow">
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-6">
                                     Languages
                                 </div>
                                 <div className="grid grid-cols-3 gap-2">
@@ -77,9 +95,6 @@ export default function Resume() {
                                             )
                                         })
                                     }
-                                </div>
-                                <div className="w-full text-sm lg:text-md mt-52 font-nome italic px-6 py-2 mb-2">
-                                    {resume?.personalInformation?.contactInformation?.moreInformation?.description}
                                 </div>
                             </div>
                         </div>
@@ -105,34 +120,38 @@ export default function Resume() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-2 px-6 py-2">
                                         Education and certification
                                     </div>
-                                    {resume?.personalInformation?.studies?.map(study => {
-                                            return (
-                                                <Study {...study} 
-                                                    position={study?.position ?? 0} />
-                                            )
-                                        })
-                                    }
+                                    <div className='flex flex-col space-y-6 py-6'>
+                                        {resume?.personalInformation?.studies?.map(study => {
+                                                return (
+                                                    <Study {...study} 
+                                                        position={study?.position ?? 0} />
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-3">
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2">
                                         Hobby
                                     </div>
-                                    {resume?.personalInformation?.hobbies?.map(hobby => {
-                                            return (
-                                                <Hobby {...hobby} 
-                                                    position={hobby?.position ?? 0} />
-                                            )
-                                        })
-                                    }
+                                    <div className='flex flex-col space-y-6 py-6'>
+                                        {resume?.personalInformation?.hobbies?.map(hobby => {
+                                                return (
+                                                    <Hobby {...hobby} 
+                                                        position={hobby?.position ?? 0} />
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                                 <div className="flex flex-col grow">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
                                         Profile and Portfolio
                                     </div>
-                                    <div className="flex flex-row h-[205px] justify-between px-6">
+                                    <div className="flex flex-row justify-between px-6">
                                         <div className="grid grid-rows-2">
                                             <div className="grid grid-cols-4">
                                                 <div className="self-center justify-self-center">
