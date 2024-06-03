@@ -100,7 +100,7 @@ export default function Resume() {
                         </div>
                         <div className="w-0 lg:w-[1%] bg-orange-600" />
                         <div className="w-full lg:w-[52%] bg-gray-800 text-white">
-                            <div className="flex flex-col w-full">
+                            <div className="flex flex-col w-full h-full">
                                 <div className="flex flex-col">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-2">
                                         Technologies/Languages
@@ -121,7 +121,7 @@ export default function Resume() {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-2 px-6 py-2">
-                                        Education and certification
+                                        Education & certification
                                     </div>
                                     <div className='flex flex-col space-y-6 py-6'>
                                         {resume?.personalInformation?.studies?.map(study => {
@@ -135,7 +135,7 @@ export default function Resume() {
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2">
-                                        Hobby
+                                        Hobby & Interests
                                     </div>
                                     <div className='flex flex-col space-y-6 py-6'>
                                         {resume?.personalInformation?.hobbies?.map(hobby => {
@@ -147,12 +147,12 @@ export default function Resume() {
                                         }
                                     </div>
                                 </div>
-                                <div className="flex flex-col grow">
+                                <div className="flex flex-col h-full">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
-                                        Profile and Portfolio
+                                        Profile & Portfolio
                                     </div>
-                                    <div className="flex flex-row justify-between px-6">
-                                        <div className="grid grid-rows-2">
+                                    <div className="flex flex-row justify-between px-6 h-full">
+                                        <div className="grid grid-rows-2 max-h-56">
                                             <div className="grid grid-cols-4">
                                                 <div className="self-center justify-self-center">
                                                     <LinkedInLogo/>
