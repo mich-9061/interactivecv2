@@ -18,8 +18,6 @@ export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
     const { slug } = useParams();
     const { setSlug } = useSlug();
-    const leftBottomSectionRef = useRef<HTMLDivElement>(null);
-    const rightBottomSectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (slug) {
@@ -27,20 +25,6 @@ export default function Resume() {
             ResumeController.getResumeFromSlug(slug).then(setResume);
         }
     }, [slug, setSlug]);
-
-    /* useEffect(() => {
-        const leftBottomSection = leftBottomSectionRef.current;
-        const rightBottomSection = rightBottomSectionRef.current;
-
-        if (leftBottomSection && rightBottomSection) {
-            const leftHeight = leftBottomSection.offsetHeight;
-            const rightHeight = rightBottomSection.offsetHeight;
-            const maxHeight = Math.max(leftHeight, rightHeight);
-
-            leftBottomSection.style.height = `${maxHeight}px`;
-            rightBottomSection.style.height = `${maxHeight}px`;
-        }
-    }, [resume]); */
 
     return (
         <div className="flex justify-center w-full">

@@ -1,10 +1,19 @@
+import { useAuth } from "Frontend/auth";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 export default function Login() {
+    const { state, login } = useAuth();
+    const [hasError, setError] = useState<boolean>();
+    const [url, setUrl] = useState<string>();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [slug, setSlug] = useState('');
 
+    if (state.user && url) {
+        const path = new URL(url, document.baseURI).pathname;
+        return <Navigate to={path} replace />;
+    }
     const handleLogin = () => {
         // Qui puoi gestire la logica di autenticazione, ad esempio inviare una richiesta API al tuo backend
         console.log('Username:', username);
@@ -36,7 +45,7 @@ export default function Login() {
                 id="password"
                 type="password"
                 placeholder="Enter your password"
-                value={username}
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
             <label className="justify-self-end py-2 px-3" htmlFor="slug">
@@ -47,7 +56,7 @@ export default function Login() {
                 id="slug"
                 type="text"
                 placeholder="Enter candidate code"
-                value={username}
+                value={slug}
                 onChange={(e) => setSlug(e.target.value)}
             />
             <button

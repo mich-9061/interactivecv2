@@ -7,11 +7,13 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
+import com.vaadin.flow.spring.security.VaadinWebSecurity;
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+public class SecurityConfig extends VaadinWebSecurity {
     
-    @Bean
+   /*  @Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests(requests -> requests
@@ -33,6 +35,22 @@ public class SecurityConfig {
 		// 	.formLogin(Customizer.withDefaults());
 
 		// return http.build();
-	}
+	} */
+
+	// hilla stays on top of Spring Security
+	@Override
+  	protected void configure(HttpSecurity http) throws Exception {
+		http
+			.authorizeHttpRequests(requests -> requests
+				.requestMatchers("/about").permitAll()
+				.anyRequest().authenticated()
+			)
+			.formLogin(form -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.logout(LogoutConfigurer::permitAll);
+		super.configure(http);
+  	}
 
 }
