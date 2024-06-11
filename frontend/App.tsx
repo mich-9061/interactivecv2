@@ -3,6 +3,8 @@ import { RouterProvider } from 'react-router-dom';
 import "./index.css";
 import { SlugProvider } from './SlugContext';
 import { AuthProvider } from './auth';
+import { createRoot } from 'react-dom/client';
+import { createElement } from 'react';
 
 export default function App() {
   return (
@@ -12,3 +14,5 @@ export default function App() {
       </SlugProvider>
     </AuthProvider>
 )}
+
+createRoot(document.getElementById('outlet')!).render(createElement(App));
