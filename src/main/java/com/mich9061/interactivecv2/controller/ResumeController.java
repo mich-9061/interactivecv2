@@ -1,7 +1,5 @@
 package com.mich9061.interactivecv2.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.mich9061.interactivecv2.model.ResumeModel;
 import com.mich9061.interactivecv2.service.PersonalInformationService;
 
@@ -18,7 +16,6 @@ public class ResumeController {
         return new ResumeModel(personalInformationService.getPersonalInformationFromSlug(slug));
     }
 
-    @Autowired
     public ResumeController(PersonalInformationService personalInformationService){
         this.personalInformationService = personalInformationService;
     }
