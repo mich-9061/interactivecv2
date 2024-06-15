@@ -1,7 +1,8 @@
+import { useSlug } from 'Frontend/SlugContext';
 import ResumeModel from 'Frontend/generated/com/mich9061/interactivecv2/model/ResumeModel';
 import { ResumeController } from 'Frontend/generated/endpoints';
-import { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, redirect, useParams } from 'react-router-dom';
 import { ContactInformation } from '../components/ContactInformation';
 import { Hobby } from '../components/Hobby';
 import { Language } from '../components/Language';
@@ -10,9 +11,8 @@ import { Skill } from '../components/Skill';
 import { Study } from '../components/Study';
 import { Technology } from '../components/Technology';
 import { Work } from '../components/Work';
-import { LinkedInLogo } from '../icons/LinkedInLogo';
 import { GithubLogo } from '../icons/GithubLogo';
-import { useSlug } from 'Frontend/SlugContext';
+import { LinkedInLogo } from '../icons/LinkedInLogo';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
@@ -23,6 +23,8 @@ export default function Resume() {
         if (slug) {
             setSlug(slug);
             ResumeController.getResumeFromSlug(slug).then(setResume);
+        } else {
+            redirect('/error-page')
         }
     }, [slug, setSlug]);
 

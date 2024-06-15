@@ -11,18 +11,13 @@ const routing = [
     handle: { title: 'Interactive CV' },
     children: [
       { path: '/', element: <AboutInteractiveCV />, handle: { title: 'Welcome to Interactive CV' } }, //TODO: Homepage no login
-      { path: '/resume/:slug', element: <Resume />, handle: { title: 'Interactive CV', requiresLogin: true} },
-      { path: '/about', element: <AboutInteractiveCV />, handle: { title: 'About Interactive CV' } }, //TODO: about no loging
-      // { path: '/login', element: <Login />, handle: { title: 'Login' } },
+      { path: '/resume/:slug', element: <Resume />, handle: { title: 'Interactive CV' } },
+      { path: '/about', element: <AboutInteractiveCV />, handle: { title: 'About Interactive CV' } },
+      { path: '/login', element: <Login />, handle: { title: 'Login' } },
       // { path: '/profile', element: <AboutInteractiveCV />, handle: { title: 'Profile' } }, //TODO: Profile/admin page depending on user privilege
       // { path: '/register', element: <AboutInteractiveCV />, handle: { title: 'Sign In' } }, //TODO: SignUp page -> user low privilege
       { path: '*', element: <ErrorView /> }
     ],
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    handle: { title: 'Login' }
   }
 ] as RouteObject[];
 

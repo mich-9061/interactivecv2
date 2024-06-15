@@ -5,14 +5,15 @@ import com.mich9061.interactivecv2.service.PersonalInformationService;
 
 import dev.hilla.BrowserCallable;
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.constraints.NotNull;
 
-@RolesAllowed("admin")
+@RolesAllowed("ROLE_USER")
 @BrowserCallable
 public class ResumeController {
     
     private PersonalInformationService personalInformationService;
 
-    public ResumeModel getResumeFromSlug(String slug){
+    public ResumeModel getResumeFromSlug(@NotNull String slug){
         return new ResumeModel(personalInformationService.getPersonalInformationFromSlug(slug));
     }
 

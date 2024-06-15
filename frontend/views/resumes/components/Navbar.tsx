@@ -22,7 +22,7 @@ export const Navbar = () => {
             <div className="flex flex-col w-full max-w-7xl">
                 <div className="w-full py-1 px-3 bg-gray-100">
                     {location.pathname.includes("/about") ? (
-                        <NavLink className="flex flex-row items-center group relative" to={`/resume/${slug}`}>
+                        <NavLink className="flex flex-row items-center group relative" to={slug?`/resume/${slug}`:'/login'}>
                             <div className="absolute left-[14px] group-hover:animate-bounceLeft transition-all flex items-center">
                                 <LeftArrow/>
                             </div>
