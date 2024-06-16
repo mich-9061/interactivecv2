@@ -1,11 +1,14 @@
 import router from 'Frontend/routes.js';
 import { RouterProvider } from 'react-router-dom';
-import "./index.css";
 import { SlugProvider } from './SlugContext';
+import "./index.css";
+import { AuthProvider } from './auth';
 
 export default function App() {
   return (
-    <SlugProvider>
-      <RouterProvider router={router} />
-    </SlugProvider>
+    <AuthProvider>
+      <SlugProvider>
+        <RouterProvider router={router} />
+      </SlugProvider>
+    </AuthProvider>
 )}

@@ -2,7 +2,6 @@ package com.mich9061.interactivecv2.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mich9061.interactivecv2.entity.PersonalInformation;
@@ -59,7 +58,6 @@ public class PersonalInformationServiceImpl implements PersonalInformationServic
 
     }
 
-    @Autowired
     public PersonalInformationServiceImpl(
         PersonalInformationRepository personalInformationRepository, 
         ContactInformationService contactInformationService, 

@@ -1,44 +1,60 @@
-import Rating from "@mui/material/Rating/Rating";
+import { Stack, withStyles } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress/LinearProgress";
 import LanguageModel from "Frontend/generated/com/mich9061/interactivecv2/model/LanguageModel";
+import { useState } from "react";
+import { DownArrow } from "../icons/DownArrow";
 
 export const Language = (props: LanguageModel) => {
+    const averageLevel = () => {
+        switch(props.level) {
+            case 1:
+                return 'base';
+            case 2:
+                return 'base';
+            case 3:
+                return 'intermediate';
+            case 4:
+                return 'fluent';
+            case 5:
+                return 'mother tongue';
+            default:
+                return 'unkown';
+        }
+    };
+    const normalise = (value: number) => ((value - 1) * 100) / (5 - 1);
+    const [isOpen, setIsOpen] = useState(false);
+    const handleToggle = () => {
+        setIsOpen(!isOpen);
+    };
     return (
-        <div className="flex flex-col border border-gray-500 bg-gray-100 p-3 transition-transform duration-500 hover:scale-105 hover:bg-gray-200">
+        <div className={`flex flex-col border border-gray-500 bg-gray-100 p-3 z-10 transition-transform hover:scale-105 hover:bg-gray-200 overflow-hidden duration-500 ${isOpen ? 'max-h-screen' : 'max-h-[70px]'}`}
+                onClick={handleToggle}>
             <div className="flex flex-row items-baseline justify-between font-name font-semibold">
                 {props.languageName}
-                <Rating 
-                    name="read-only"  
-                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
-                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
-                    value={props.level} 
-                    readOnly />
+                <div className="lowercase font-light font">{averageLevel()}</div>
             </div>
-            <div className="flex flex-row items-baseline justify-between font-paragraph font-sm mt-1">
+            { !isOpen && (
+            <div className="my-2 h-4 w-4 place-self-center animate-bounce">
+                <DownArrow/>
+            </div>
+            )}
+            <div className="grid grid-cols-2 items-center justify-between font-paragraph font-sm mt-1">
                 Read
-                <Rating 
-                    name="read-only"  
-                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
-                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
-                    value={props.readLevel} 
-                    readOnly />
+                <Stack>
+                    <LinearProgress variant="determinate" value={normalise(props.readLevel)} color="inherit"/>
+                </Stack >
             </div>
-            <div className="flex flex-row items-baseline justify-between font-sm font-paragraph">
+            <div className="grid grid-cols-2 items-center justify-between font-sm font-paragraph">
                 Written
-                <Rating 
-                    name="read-only"  
-                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
-                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
-                    value={props.writtenLevel} 
-                    readOnly />
+                <Stack>
+                    <LinearProgress variant="determinate" value={normalise(props.writtenLevel)} color="inherit"/>
+                </Stack>
             </div>
-            <div className="flex flex-row items-baseline justify-between font-sm font-paragraph">
+            <div className="grid grid-cols-2 items-center justify-between font-sm font-paragraph">
                 Spoken
-                <Rating 
-                    name="read-only"  
-                    icon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-700 mr-[1px]" />} 
-                    emptyIcon={<span className="w-3 h-3 rounded-full border border-gray-700 bg-gray-300 mr-[1px]" />}
-                    value={props.spokenLevel} 
-                    readOnly />
+                <Stack>
+                    <LinearProgress variant="determinate" value={normalise(props.spokenLevel)} color="inherit"/>
+                </Stack>
             </div>
             {props.abroadExperience && (
                 <div className="text-right font-paragraph font-thin mt-1">

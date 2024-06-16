@@ -2,7 +2,6 @@ package com.mich9061.interactivecv2.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mich9061.interactivecv2.entity.ContactInformation;
@@ -43,7 +42,6 @@ public class ContactInformationServiceImpl implements ContactInformationService{
 
     }
 
-    @Autowired
     public ContactInformationServiceImpl(
         ContactInformationRepository contactInformationRepository,
         MoreInformationService moreInformationService) {

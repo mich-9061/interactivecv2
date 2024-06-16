@@ -2,7 +2,7 @@
 export const GithubLogo = () => {
     return (
     // <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <svg width="60px" height="60px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg width="45px" height="45px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <title>github [#142]</title>
             <desc>Created with Sketch.</desc>
             <defs>

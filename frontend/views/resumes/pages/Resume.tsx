@@ -1,7 +1,8 @@
+import { useSlug } from 'Frontend/SlugContext';
 import ResumeModel from 'Frontend/generated/com/mich9061/interactivecv2/model/ResumeModel';
 import { ResumeController } from 'Frontend/generated/endpoints';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, redirect, useParams } from 'react-router-dom';
 import { ContactInformation } from '../components/ContactInformation';
 import { Hobby } from '../components/Hobby';
 import { Language } from '../components/Language';
@@ -10,9 +11,8 @@ import { Skill } from '../components/Skill';
 import { Study } from '../components/Study';
 import { Technology } from '../components/Technology';
 import { Work } from '../components/Work';
-import { LinkedInLogo } from '../icons/LinkedInLogo';
 import { GithubLogo } from '../icons/GithubLogo';
-import { useSlug } from 'Frontend/SlugContext';
+import { LinkedInLogo } from '../icons/LinkedInLogo';
 
 export default function Resume() {
     const [resume, setResume] = useState<ResumeModel | null | undefined>();
@@ -23,6 +23,8 @@ export default function Resume() {
         if (slug) {
             setSlug(slug);
             ResumeController.getResumeFromSlug(slug).then(setResume);
+        } else {
+            redirect('/error-page')
         }
     }, [slug, setSlug]);
 
@@ -31,17 +33,19 @@ export default function Resume() {
             {resume?.personalInformation ? (
                 <div className="flex flex-col w-full">
                     <div className="flex flex-row w-full">
-                        <div className="w-full lg:w-[47%]">
+                        <div className="w-full lg:w-[47%] flex flex-col">
                             <MyHeader {...resume.personalInformation} />
                             <ContactInformation {...resume.personalInformation.contactInformation} />
                             <div className='w-full text-2xl lg:text-4xl text-white font-title bg-orange-600 uppercase p-6'>
                                 WORK EXPERIENCE
                             </div>
-                            {resume.personalInformation.works?.map(work => {
-                                return (
-                                    <Work {...work} position={work?.position ?? 0} />
+                            <div className='flex flex-col space-y-6 bg-gray-100 py-6'>
+                                {resume.personalInformation.works?.map(work => {
+                                    return (
+                                        <Work {...work} position={work?.position ?? 0} />
+                                    )}
                                 )}
-                            )}
+                            </div>
                             <div className="flex flex-col">
                                 <div className="w-full text-lg lg:text-xl uppercase font-title text-white bg-orange-600 px-6 py-2 list-disc">
                                     Soft Skills
@@ -58,8 +62,8 @@ export default function Resume() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="flex flex-col bg-gray-100 pb-6 h-[500px]">
-                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
+                            <div className="flex flex-col bg-gray-100 pb-6 grow">
+                                <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-6">
                                     Languages
                                 </div>
                                 <div className="grid grid-cols-3 gap-2">
@@ -78,14 +82,11 @@ export default function Resume() {
                                         })
                                     }
                                 </div>
-                                <div className="w-full text-sm lg:text-md mt-52 font-nome italic px-6 py-2 mb-2">
-                                    {resume?.personalInformation?.contactInformation?.moreInformation?.description}
-                                </div>
                             </div>
                         </div>
                         <div className="w-0 lg:w-[1%] bg-orange-600" />
                         <div className="w-full lg:w-[52%] bg-gray-800 text-white">
-                            <div className="flex flex-col w-full">
+                            <div className="flex flex-col w-full h-full">
                                 <div className="flex flex-col">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-2">
                                         Technologies/Languages
@@ -105,35 +106,39 @@ export default function Resume() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2">
-                                        Education and certification
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-2 px-6 py-2">
+                                        Education & certification
                                     </div>
-                                    {resume?.personalInformation?.studies?.map(study => {
-                                            return (
-                                                <Study {...study} 
-                                                    position={study?.position ?? 0} />
-                                            )
-                                        })
-                                    }
+                                    <div className='flex flex-col space-y-6 py-6'>
+                                        {resume?.personalInformation?.studies?.map(study => {
+                                                return (
+                                                    <Study {...study} 
+                                                        position={study?.position ?? 0} />
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
                                 <div className="flex flex-col">
-                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 mt-5 px-6 py-2 mb-3">
-                                        Hobby
+                                    <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2">
+                                        Hobby & Interests
                                     </div>
-                                    {resume?.personalInformation?.hobbies?.map(hobby => {
-                                            return (
-                                                <Hobby {...hobby} 
-                                                    position={hobby?.position ?? 0} />
-                                            )
-                                        })
-                                    }
+                                    <div className='flex flex-col space-y-6 py-6'>
+                                        {resume?.personalInformation?.hobbies?.map(hobby => {
+                                                return (
+                                                    <Hobby {...hobby} 
+                                                        position={hobby?.position ?? 0} />
+                                                )
+                                            })
+                                        }
+                                    </div>
                                 </div>
-                                <div className="flex flex-col grow">
+                                <div className="flex flex-col h-full">
                                     <div className="w-full text-lg lg:text-xl uppercase font-title text-white  bg-orange-600 px-6 py-2 mb-2">
-                                        Profile and Portfolio
+                                        Profile & Portfolio
                                     </div>
-                                    <div className="flex flex-row h-[200px] justify-between px-6">
-                                        <div className="grid grid-rows-2">
+                                    <div className="flex flex-row justify-between px-6 h-full">
+                                        <div className="grid grid-rows-2 max-h-56">
                                             <div className="grid grid-cols-4">
                                                 <div className="self-center justify-self-center">
                                                     <LinkedInLogo/>
