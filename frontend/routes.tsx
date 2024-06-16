@@ -11,7 +11,7 @@ const routing = [
     handle: { title: 'Interactive CV' },
     children: [
       { path: '/', element: <AboutInteractiveCV />, handle: { title: 'Welcome to Interactive CV' } }, //TODO: Homepage no login
-      { path: '/resume/:slug', element: <Resume />, handle: { title: 'Interactive CV', requiresLogin: true } },
+      { path: '/resume/:slug', element: <Resume />, handle: { title: 'Interactive CV', rolesAllowed: ['USER'] } },
       { path: '/about', element: <AboutInteractiveCV />, handle: { title: 'About Interactive CV' } },
       { path: '/login', element: <Login />, handle: { title: 'Login' } },
       // { path: '/profile', element: <AboutInteractiveCV />, handle: { title: 'Profile' } }, //TODO: Profile/admin page depending on user privilege
