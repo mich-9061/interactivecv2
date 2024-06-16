@@ -35,9 +35,9 @@ public class SecurityConfig extends VaadinWebSecurity {
             registry.requestMatchers(new AntPathRequestMatcher("/about")).permitAll()
         );
         super.configure(http);
-
         // Use a custom login view and redirect to root on logout
         setLoginView(http, "/login", "/login");
+
     }
 
     @Bean

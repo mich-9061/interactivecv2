@@ -1,15 +1,16 @@
-import { LoginForm } from "@hilla/react-components/LoginForm.js";
 import { LoginOverlay } from "@hilla/react-components/LoginOverlay.js";
+import { TextField } from "@hilla/react-components/TextField.js";
 import { useAuth } from "Frontend/auth";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [slug, setSlug] = useState('');
-    const [url, setUrl] = useState<string>()
     const [hasError, setHasError] = useState(false);
     const { state, login } = useAuth();
+    const navigate = useNavigate();
 
     return(
         <div className="bg-gray-100 w-full h-[700px]">
@@ -73,10 +74,20 @@ export default function Login() {
                     if (error) {
                         setHasError(Boolean(error));
                       } else {
-                        setUrl(redirectUrl ?? defaultUrl ?? '/login');
+                        const newUrl = slug !== '' ? `/resume/${slug}` : redirectUrl ?? defaultUrl ?? '/login';
+                        navigate(newUrl);
                       }
-                }}
-                />
+                }} 
+            >
+                <TextField 
+                    slot="custom-form-area" 
+                    id="slug" 
+                    name="slug" 
+                    label="Candidate code" 
+                    value={slug} 
+                    required 
+                    onChange={(e) => setSlug(e.target.value)}/>
+            </LoginOverlay>
         </div>
     )
 }
