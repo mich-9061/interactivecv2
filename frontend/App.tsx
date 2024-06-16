@@ -1,22 +1,14 @@
 import router from 'Frontend/routes.js';
 import { RouterProvider } from 'react-router-dom';
-import "./index.css";
 import { SlugProvider } from './SlugContext';
-// import { AuthProvider } from './auth';
-import { createRoot } from 'react-dom/client';
-import { createElement } from 'react';
+import "./index.css";
+import { AuthProvider } from './auth';
 
 export default function App() {
   return (
-    // <AuthProvider>
+    <AuthProvider>
       <SlugProvider>
         <RouterProvider router={router} />
       </SlugProvider>
-    // </AuthProvider>
+    </AuthProvider>
 )}
-
-// createRoot(document.getElementById('outlet')!).render(createElement(App));
-
-// const container = document.getElementById('outlet')!;
-// const root = createRoot(container);
-// root.render(createElement(App));

@@ -1,13 +1,10 @@
-// import { configureAuth } from '@hilla/react-auth';
-// import { SecurityService } from 'Frontend/generated/endpoints';
+import { configureAuth } from '@hilla/react-auth';
+import { SecurityService } from 'Frontend/generated/endpoints';
 
-// const auth = configureAuth(UserInfoService.getUserInfo);
+// Configure auth to use `SecurityService.getAuthenticatedUser`
+const auth = configureAuth(SecurityService.getAuthenticatedUser);
 
-// Configure auth to use `UserInfoService.getUserInfo` and map to custom roles
-// in the case it doesn't find the authorities
-// const auth = configureAuth(UserInfoService.getUserInfo, {
-//     getRoles: (userInfo) => userInfo.authorities,
-//   });
-
-// export const useAuth = auth.useAuth;
-// export const AuthProvider = auth.AuthProvider;
+// Export auth provider and useAuth hook, which are automatically
+// typed to the result of `SecurityService.getAuthenticatedUser`
+export const useAuth = auth.useAuth;
+export const AuthProvider = auth.AuthProvider;
