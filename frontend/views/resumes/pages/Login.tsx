@@ -7,8 +7,9 @@ export default function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [slug, setSlug] = useState('');
+    const [url, setUrl] = useState<string>()
     const [hasError, setHasError] = useState(false);
-    const { login } = useAuth();
+    const { state, login } = useAuth();
 
     return(
         <div className="bg-gray-100 w-full h-[700px]">
@@ -68,14 +69,14 @@ export default function Login() {
                 error={hasError}
                 noForgotPassword
                 onLogin={async ({ detail: { username, password } }) => {
-                    const { error } = await login(username, password);
-                    setHasError(Boolean(error));
+                    const { defaultUrl, error, redirectUrl } = await login(username, password);
+                    if (error) {
+                        setHasError(Boolean(error));
+                      } else {
+                        setUrl(redirectUrl ?? defaultUrl ?? '/login');
+                      }
                 }}
                 />
         </div>
     )
-}
-
-function useSignal(arg0: boolean) {
-    throw new Error("Function not implemented.");
 }

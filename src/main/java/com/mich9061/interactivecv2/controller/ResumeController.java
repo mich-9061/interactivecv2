@@ -2,13 +2,13 @@ package com.mich9061.interactivecv2.controller;
 
 import com.mich9061.interactivecv2.model.ResumeModel;
 import com.mich9061.interactivecv2.service.PersonalInformationService;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 
 import dev.hilla.BrowserCallable;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.constraints.NotNull;
 
 @BrowserCallable
-@AnonymousAllowed
+@RolesAllowed("ROLE_USER")
 public class ResumeController {
     
     private PersonalInformationService personalInformationService;
